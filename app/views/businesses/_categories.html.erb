@@ -1,0 +1,6 @@
+<ul class="category">
+	<% @categories.each do |category| %>
+		<li class="category"><%= link_to category.title, businesses_by_cat_path(category.child_cat_id, :title => category.title.gsub(/\s/,"-").gsub("\"",""))%></li>
+		
+	<% end %>
+</ul>

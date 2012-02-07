@@ -1,0 +1,25 @@
+<ul id="menu">
+	<li id="menuitem">
+		<%= link_to "home", homepage_path%>
+	</li>
+	<li id="menuitem">
+		<%= link_to "articles", articles_path%>
+	</li>
+	<li id="menuitem">
+		<%= link_to "blogs", blogs_path%>
+	</li>
+	<li id="menuitem">
+		<%= link_to "business listings", homepage_path%>
+	</li>
+	<li id="menuitem">
+		<%= link_to "coupons", homepage_path%>
+	</li>
+	<li id="menuitem">
+		<% if current_user %>
+			<%= link_to current_user.firstname, edit_user_path(current_user.id)%>
+			(<%= link_to "Logout", :logout, :class => "logout" %>)
+		<% else %>
+			<%= link_to "register/login", new_user_path%>
+		<% end %>
+	</li>
+</ul><!-- ./menu -->

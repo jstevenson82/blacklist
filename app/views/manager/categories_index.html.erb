@@ -1,0 +1,26 @@
+<div class="pad10"><%= link_to 'New Category', manager_new_categories_path %></div>
+
+<table class="clear" cellspacing="10" width="600px">
+  <tr>
+    <th>Title</th>
+    <th>Parent cat</th>
+    <th>Child cat</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.title %></td>
+    <td><%= category.parent_cat_id %></td>
+    <td><%= category.child_cat_id %></td>
+    <td><%= link_to 'Edit', manager_edit_categories_path(category) %></td>
+    <td><%= link_to "Delete", manager_destroy_categories_path(category.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @categories %>
+</div>
+<div class="clear"></div>

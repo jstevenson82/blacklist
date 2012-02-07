@@ -1,0 +1,106 @@
+<h1>New Business</h1>
+
+<%= form_for @business, :url => manager_create_businesses_path do |f| %>
+  <% if @business.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business.errors.count, "error") %> prohibited this business from being saved:</h2>
+
+      <ul>
+      <% @business.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="pad10">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="pad10">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="pad10">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="pad10">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </div>
+  <div class="pad10">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="pad10">
+    <%= f.label :state %><br />
+    <%= f.select :state, us_states%>
+  </div>
+  <div class="pad10">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="pad10">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="pad10">
+    <%= f.label :year_established %><br />
+    <%= f.text_field :year_established %>
+  </div>
+  <div class="pad10">
+    <%= f.label :payment_method %><br />
+    <%= f.text_field :payment_method %>
+  </div>
+  <div class="pad10">
+    <%= f.label :parking %><br />
+    <%= f.text_area :parking %>
+  </div>
+  <div class="pad10">
+    <%= f.label :mon_hours %><br />
+    <%= f.text_field :mon_hours %>
+  </div>
+  <div class="pad10">
+    <%= f.label :tues_hours %><br />
+    <%= f.text_field :tues_hours %>
+  </div>
+  <div class="pad10">
+    <%= f.label :wed_hours %><br />
+    <%= f.text_field :wed_hours %>
+  </div>
+  <div class="pad10">
+    <%= f.label :thurs_hours %><br />
+    <%= f.text_field :thurs_hours %>
+  </div>
+  <div class="pad10">
+    <%= f.label :fri_hours %><br />
+    <%= f.text_field :fri_hours %>
+  </div>
+  <div class="pad10">
+    <%= f.label :sat_hours %><br />
+    <%= f.text_field :sat_hours %>
+  </div>
+  <div class="pad10">
+    <%= f.label :sun_hours %><br />
+    <%= f.text_field :sun_hours %>
+  </div>
+  <div class="pad10">
+    <%= f.label :other_hours %><br />
+    <%= f.text_field :other_hours %>
+  </div>
+  <div class="pad10">
+  	<%= f.label "Category" %><br />
+  	<%= collection_select("business", "parent_cat_id", Category.find(:all, :conditions => ["parent_cat_id=0"]), :child_cat_id, :title) %>
+  </div>
+  <div id="sub_cat" >
+  </div>
+  <div class="pad10">
+    <%= f.label :listinglevel %><br />
+    <%= f.select :listinglevel, [['Premium',120],['Standard',110],['Free',100]] %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Business"%>
+  </div>
+<% end %>
+

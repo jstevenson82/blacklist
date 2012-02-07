@@ -1,0 +1,41 @@
+<div class="pad10"><%= link_to 'New Business', manager_new_businesses_path %></div>
+
+<table class="clear" cellspacing="10" width="700px">
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>City</th>
+    <th>State</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @businesses.each do |business| %>
+  <tr>
+    <td><%= link_to business.name, manager_edit_businesses_path(business) %></td>
+    <td><%= business.phone %></td>
+    <td><%= business.city %></td>
+    <td><%= business.state %></td>
+    <td><%= link_to 'Add Coupon', manager_new_coupon_path(business.id) %></td>
+    <td></td>
+    <td><%= link_to "Delete", manager_destroy_businesses_path(business.id) %></td>
+  </tr>
+  <% @coupons = Coupon.find(:all, :conditions => ["b_id=?",business.id])
+  	 @coupons.each do |coupon| %>
+	  	<tr>
+	  		<td class="couponDesg">coupon</td>
+		    <td><%= link_to coupon.headline, manager_edit_coupons_path(coupon) %></td>
+		    <td><%= coupon.expire %></td>
+		    <td><%= coupon.exclusion %></td>
+		    <td><%= link_to "Delete", manager_destroy_coupons_path(coupon.id) %></td>
+		    <td>&nbsp;</td>
+	  	</tr>
+  <% end %>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @businesses %>
+</div>
+<div class="clear"></div>

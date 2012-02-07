@@ -1,0 +1,15 @@
+<table class="clear" cellspacing="10">
+  <tr>
+    <th>Title</th>
+    <th>Parent cat</th>
+    <th>Child cat</th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.title %></td>
+    <td><%= category.parent_cat_id %></td>
+    <td><%= category.child_cat_id %></td>
+  </tr>
+<% end %>
+</table>

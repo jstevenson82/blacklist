@@ -1,0 +1,105 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @business.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @business.address %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @business.phone %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @business.zip %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @business.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @business.state %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @business.email %>
+</p>
+
+<p>
+  <b>Year established:</b>
+  <%= @business.year_established %>
+</p>
+
+<p>
+  <b>Payment method:</b>
+  <%= @business.payment_method %>
+</p>
+
+<p>
+  <b>Parking:</b>
+  <%= @business.parking %>
+</p>
+
+<p>
+  <b>Mon hours:</b>
+  <%= @business.mon_hours %>
+</p>
+
+<p>
+  <b>Tues hours:</b>
+  <%= @business.tues_hours %>
+</p>
+
+<p>
+  <b>Wed hours:</b>
+  <%= @business.wed_hours %>
+</p>
+
+<p>
+  <b>Thurs hours:</b>
+  <%= @business.thurs_hours %>
+</p>
+
+<p>
+  <b>Fri hours:</b>
+  <%= @business.fri_hours %>
+</p>
+
+<p>
+  <b>Sat hours:</b>
+  <%= @business.sat_hours %>
+</p>
+
+<p>
+  <b>Sun hours:</b>
+  <%= @business.sun_hours %>
+</p>
+
+<p>
+  <b>Other hours:</b>
+  <%= @business.other_hours %>
+</p>
+
+<p>
+  <b>Parent cat:</b>
+  <%= @business.parent_cat_id %>
+</p>
+
+<p>
+  <b>Child cat:</b>
+  <%= @business.child_cat_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_business_path(@business) %> |
+<%= link_to 'Back', businesses_path %>

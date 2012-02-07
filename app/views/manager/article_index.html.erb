@@ -1,0 +1,28 @@
+<div class="pad10"><%= link_to "Add Article", manager_new_articles_path %></div>
+
+<table class="clear" cellspacing="10" width="600px">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Link</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.description %></td>
+    <td><%= article.link %></td>
+    <td><%= article.user_id %></td>
+    <td><%= link_to 'Edit', manager_edit_articles_path(article) %></td>
+    <td><%= link_to "Delete", manager_destroy_articles_path(article.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @articles %>
+</div>
+<div class="clear"></div>

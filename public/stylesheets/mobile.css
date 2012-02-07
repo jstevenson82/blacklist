@@ -1,0 +1,81 @@
+/* CSS Document */
+
+body {
+    /*background: url("../images/bkg-tile.png") repeat scroll left top transparent;*/
+	background-color:#e5e5e2;
+    color: #363636;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    text-align: center;
+	margin:0px !important;
+	padding:0px !important;
+}
+
+#page {
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: left;
+    width: 100%;
+}
+
+.top_shadow {
+	background-image: url("../images/shadow_top_right.jpg");
+    background-position: right top;
+    background-repeat: no-repeat;
+    height: 100%;
+    position: absolute;
+    right: -5px;
+    top: 0;
+    width: 5px;
+    z-index: 102;
+}
+
+.middle_shadow {
+	background-image: url("../images/shadow_right.jpg");
+    background-position: right center;
+    background-repeat: repeat-y;
+    height: 99%;
+    position: absolute;
+    right: -5px;
+    top: 0;
+    width: 5px;
+    z-index: 98;
+}
+
+.bottom_shadow { 
+	background-image: url("../images/shadow_bottom_center.jpg");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    height: 5px;
+    width: 100%;
+    z-index: 99;
+}
+
+#mobile_container { width:100%; }
+
+.pad10 { padding:10px; }
+.mar10 { margin:10px; }
+.mar30 { margin:40px; }
+
+#bl-header { border-bottom:2px solid #ccc; background-color:#FFF; }
+#bl-footer { border-top:2px solid #ccc; background-color:#FFF; }
+
+#nav-menu { clear: both; float: left; text-align: center; width: 100%; }
+
+.left { float:left; }
+
+.right { float:right; }
+
+.clear { clear:both; }
+
+ul#menu { list-style-type:none; margin:5px 0; padding: 0px; }
+.menuitem { display:inline; }
+
+#menu a { color: #666666; font-size: 30px; font-weight: bold; padding-right: 20px; text-decoration: none; }
+#menu a:hover { text-decoration: underline; color:#000000; }
+
+#basic_listing { background-color:#fff; position:relative; }
+#basic_listing .title a { color: #2A6AB4; font-weight:bold; text-decoration:none; line-height:36px; }
+#basic_listing .address { line-height:36px; }
+#basic_listing .phone { line-height:36px; width:98%; background: none repeat scroll 0 0 #C3DAF4; margin:0px; padding:10px; }

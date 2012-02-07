@@ -1,0 +1,5 @@
+<ul class="category">					            
+	<% @blogs.each do |blog| %>
+		<li class="category"><%= link_to blog.title, blog %></li>
+	<% end %>
+</ul>

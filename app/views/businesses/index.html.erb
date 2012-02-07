@@ -1,0 +1,36 @@
+
+<% @businesses.each do |business| %>
+
+	<% if business.listinglevel == 120 %>
+	
+		<div id="featured_listing" class="business_listting">
+	    	<div class="pad10">
+	    		<div class="title"><%= link_to business.name, business_path(business) %></div>
+	            <div class="address clear"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
+	           	<div class="phone"><%= business.phone %></div>
+	        </div>
+			<div class="pad10 left clear">								
+				<a href="#" class="blueButtonSM left">visit website</a>
+				<a href="#" class="blueButtonSM left">write a review</a>
+			</div>
+				<div class="clear"></div>
+		</div>
+		
+	<% else %>
+	
+		<div id="basic_listing" class="business_listting <%=cycle('cycle_off', 'cycle_on')%>">
+			<div class="details">
+				<div class="title"><%= link_to business.name, business_path(business) %></div>
+				<div class="address clear"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
+				<div class="phone"><%= business.phone %></div>
+			</div>
+			<div class="review">
+				<a href="#" class="maroonButtonSM">write a review</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	<% end %>	
+	
+<% end %>
+

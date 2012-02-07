@@ -1,0 +1,28 @@
+<div class="pad10"><%= link_to 'New User', manager_new_users_path %></div>
+
+<table class="clear" cellspacing="10" width="600px">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Birthday</th>
+    <th>Username</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.firstname %></td>
+    <td><%= user.lastname %></td>
+    <td><%= user.birthday %></td>
+    <td><%= user.username %></td>
+    <td><%= link_to 'Edit', manager_edit_users_path(user) %></td>
+    <td><%= link_to "Delete", manager_destroy_users_path(user.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @users %>
+</div>
+<div class="clear"></div>

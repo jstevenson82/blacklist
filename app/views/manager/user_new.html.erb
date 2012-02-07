@@ -1,0 +1,53 @@
+<%= form_for @user, :url => manager_create_users_path do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="pad10">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="pad10">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="pad10">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="pad10">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="pad10">
+    <%= f.label :birthday %><br />
+    <%= date_select 'user', 'birthday', :start_year => 1950, :order => [ :month, :day, :year ] %>
+  </div>
+  <div class="pad10">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="pad10">
+    <%= f.label :user_type %><br />
+    <%= f.select :user_type, [['Admin','admin'],['End User','enduser'],['Advertiser','adv']] %>
+  </div>
+  <div class="pad10">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="pad10">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="actions pad10">
+    <%= f.submit "Create User" %>
+  </div>
+<% end %>

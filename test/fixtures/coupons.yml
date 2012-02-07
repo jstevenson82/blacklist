@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  b_id: MyString
+  headline: MyString
+  body: MyText
+  expire: 2012-02-03
+  exclusion: MyString
+  user_id: MyString
+
+two:
+  b_id: MyString
+  headline: MyString
+  body: MyText
+  expire: 2012-02-03
+  exclusion: MyString
+  user_id: MyString
