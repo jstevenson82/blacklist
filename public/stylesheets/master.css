@@ -443,6 +443,13 @@ li.category { padding:5px 0 5px 5px; width:100%; }
 #bl-listings #right_rail .coupon .body { color:#777676; padding-bottom:5px; }
 #bl-listings #right_rail .coupon .expire { float:left; }
 
+#bl-home #coupons a { color: #79C7EB; }
+#bl-home #coupons .coupon { border: 2px dotted #CCCCCC; margin:0 auto; float:none !important; width:70%; }
+#bl-home #coupons .coupon .title { color:#F25B00; padding-bottom:5px; }
+#bl-home #coupons .coupon .body { color:#777676; padding-bottom:5px; }
+#bl-home #coupons .coupon .expire { float:left; color:#ff0000; }
+#bl-home #coupons .coupon .exclusion { float:left; color:#999; clear:both; font-weight:bold; }
+
 #bl-details .coupon { border: 2px dotted #CCCCCC; margin:0 auto; float:none !important; width:570px; }
 #bl-details .coupon .title { color:#F25B00; padding-bottom:5px; font-weight:bold; }
 #bl-details .coupon .body { color:#777676; padding-bottom:5px; }

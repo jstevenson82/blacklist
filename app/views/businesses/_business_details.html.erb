@@ -32,48 +32,69 @@
 		<li class="title">
 			Business Hours
 		</li>
-		<li class="dayOfWeek on">
-			<span class="left">Monday</span>
-			<span class="right">9 a.m. - 5 p.m.</span>
-			<div class="clear">
-			</div>
-		</li>
-		<li class="dayOfWeek">
-			<span class="left">Tuseday</span>
-			<span class="right">9 a.m. - 5 p.m.</span>
-			<div class="clear">
-			</div>
-		</li>
-		<li class="dayOfWeek on">
-			<span class="left">Wednesday</span>
-			<span class="right">9 a.m. - 5 p.m.</span>
-			<div class="clear">
-			</div>
-		</li>
-		<li class="dayOfWeek">
-			<span class="left">Thursday</span>
-			<span class="right">9 a.m. - 5 p.m.</span>
-			<div class="clear">
-			</div>
-		</li>
-		<li class="dayOfWeek on">
-			<span class="left">Friday</span>
-			<span class="right">9 a.m. - 5 p.m.</span>
-			<div class="clear">
-			</div>
-		</li>
-		<li class="dayOfWeek">
-			<span class="left">Saturday</span>
-			<span class="right">Closed</span>
-			<div class="clear">
-			</div>
-		</li>
-		<li class="dayOfWeek on">
-			<span class="left">Sunday</span>
-			<span class="right">Closed</span>
-			<div class="clear">
-			</div>
-		</li>
+		<% if !@business.mon_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Monday</span>
+				<span class="right"><%= @business.mon_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.tues_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Tuseday</span>
+				<span class="right"><%= @business.tues_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.wed_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Wednesday</span>
+				<span class="right"><%= @business.wed_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.thurs_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Thursday</span>
+				<span class="right"><%= @business.thurs_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.fri_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Friday</span>
+				<span class="right"><%= @business.fri_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.sat_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Saturday</span>
+				<span class="right"><%= @business.sat_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.sun_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Sunday</span>
+				<span class="right"><%= @business.sun_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.other_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left"><%= @business.other_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
 	</ul>
 	<div class="tab-container">
 
