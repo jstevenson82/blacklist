@@ -4,7 +4,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Manager > The Black List > Cincinnati, Ohio > blacklist.com</title>
         <link href="/stylesheets/master.css" media="screen" rel="stylesheet" type="text/css" />
-		<%= javascript_include_tag :application %>
+        <script src="/javascripts/jquery.js"></script>
+		<script type="text/javascript" src="/javascripts/application.js"></script>
 
     </head>
     <body>
@@ -29,10 +30,13 @@
                                
                 <div id="bl-home">
 	                <% unless flash[:notice].blank? %>
-						<div id="flash" class="flash_html flash-sucess"><%= flash[:notice]%></div> 
+						<div id="flash" class="flash_html flash-sucess clear"><%= flash[:notice]%></div> 
 					<% end %>
 					<% unless flash[:error].blank? %>
-						<div id="flash" class="flash_html flash-failure"><%= flash[:error]%></div> 
+						<div id="flash" class="flash_html flash-failure clear"><%= flash[:error]%></div> 
+					<% end %>
+					<% if flash[:error].blank? && flash[:notice].blank? %>
+						<div id="flash">&nbsp;</div>
 					<% end %>
 
 				<div id="m_menu" class="clear">

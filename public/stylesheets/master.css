@@ -51,6 +51,7 @@ a.logout { color:#000 !important; margin:0px; padding:0px !important; }
 
 #services li { margin-bottom:10px; }
 #services li:hover { background-color:#eee; }
+#sub_cat { padding:0px; margin:0px; }
 
 #bl-gallery .gallery-img { float: left; padding: 10px; width: 175px; }
 #bl-bio .bio { width:450px; float:left; }

@@ -17,7 +17,7 @@
     <td><%= business.phone %></td>
     <td><%= business.city %></td>
     <td><%= business.state %></td>
-    <td><%= link_to 'Add Coupon', manager_new_coupon_path(business.id) %></td>
+    <td><%= link_to 'Add Coupon', manager_new_coupons_path(business.id) %></td>
     <td></td>
     <td><%= link_to "Delete", manager_destroy_businesses_path(business.id) %></td>
   </tr>

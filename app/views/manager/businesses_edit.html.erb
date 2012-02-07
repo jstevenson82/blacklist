@@ -88,12 +88,12 @@
     <%= f.text_field :other_hours %>
   </div>
   <div class="pad10">
-    <%= f.label :parent_cat_id %><br />
-    <%= f.text_field :parent_cat_id %>
+    <%= f.label "Category" %><br />
+    <%= collection_select("business", "parent_cat_id", @categories, :child_cat_id, :title) %>
   </div>
   <div class="pad10">
-    <%= f.label :child_cat_id %><br />
-    <%= f.text_field :child_cat_id %>
+    <%= f.label "Sub Category" %><br />
+    <%= collection_select("business", "child_cat_id", @categories, :child_cat_id, :title) %>
   </div>
   <div class="pad10">
     <%= f.label :listinglevel %><br />

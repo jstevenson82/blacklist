@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  b_id: MyString
+  cat_it: MyString
+
+two:
+  b_id: MyString
+  cat_it: MyString

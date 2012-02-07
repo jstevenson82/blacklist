@@ -1,0 +1,25 @@
+<h1>Listing businesses_in_categories</h1>
+
+<table>
+  <tr>
+    <th>B</th>
+    <th>Cat it</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @businesses_in_categories.each do |businesses_in_category| %>
+  <tr>
+    <td><%= businesses_in_category.b_id %></td>
+    <td><%= businesses_in_category.cat_id %></td>
+    <td><%= link_to 'Show', businesses_in_category %></td>
+    <td><%= link_to 'Edit', edit_businesses_in_category_path(businesses_in_category) %></td>
+    <td><%= link_to 'Destroy', businesses_in_category, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Businesses in category', new_businesses_in_category_path %>

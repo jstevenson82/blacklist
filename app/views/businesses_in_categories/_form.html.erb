@@ -1,0 +1,27 @@
+<%= form_for(@businesses_in_category) do |f| %>
+  <% if @businesses_in_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@businesses_in_category.errors.count, "error") %> prohibited this businesses_in_category from being saved:</h2>
+
+      <ul>
+      <% @businesses_in_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :b_id %><br />
+    <%= f.text_field :b_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cat_id %><br />
+    <%= select_tag 'businesses_in_category[cat_id][]', options_from_collection_for_select(@categories, 'child_cat_id', 'title'), { :multiple => true } %>
+
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

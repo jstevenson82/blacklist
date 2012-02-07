@@ -1,5 +1,7 @@
 Blacklist::Application.routes.draw do
 
+  resources :businesses_in_categories
+
   resources :coupons, :businesses, :comments, :users, :blogs, :articles, :bookmarks, :categories, :users, :user_sessions
   
   root :to => "home#index", :as => :homepage

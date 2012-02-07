@@ -27,10 +27,10 @@
                     </div>
                 </div>
              	     <% unless flash[:notice].blank? %>
-						<div id="flash" class="flash_html flash-sucess"><%= flash[:notice]%></div> 
+						<div id="flash" class="flash_html flash-sucess clear"><%= flash[:notice]%></div> 
 					<% end %>
 					<% unless flash[:error].blank? %>
-						<div id="flash" class="flash_html flash-failure"><%= flash[:error]%></div> 
+						<div id="flash" class="flash_html flash-failure clear"><%= flash[:error]%></div> 
 					<% end %>  
 					                
                 <div id="bl-home">

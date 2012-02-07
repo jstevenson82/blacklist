@@ -210,14 +210,15 @@ class ManagerController < ApplicationController
   end
   
   def business_sub_cats
-  	@categories = Category.find(:all, :conditions => ["parent_cat_id=1000"])
+  	@categories = Category.find(:all, :conditions => ["parent_cat_id=?", params[:id]])
 	
-    respond_with @categories, :location => business_sub_cats_url
+	render :layout => false 
   end
 
   # GET /businesses/1/edit
   def businesses_edit
     @business = Business.find(params[:id])
+    @categories = Category.all
   end
 
   # POST /businesses

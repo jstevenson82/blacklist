@@ -93,8 +93,7 @@
   	<%= f.label "Category" %><br />
   	<%= collection_select("business", "parent_cat_id", Category.find(:all, :conditions => ["parent_cat_id=0"]), :child_cat_id, :title) %>
   </div>
-  <div id="sub_cat" >
-  </div>
+  <div id="sub_cat"></div>  
   <div class="pad10">
     <%= f.label :listinglevel %><br />
     <%= f.select :listinglevel, [['Premium',120],['Standard',110],['Free',100]] %>

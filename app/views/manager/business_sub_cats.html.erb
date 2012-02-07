@@ -1,3 +1,5 @@
-jQuery -> 
-$('#business_parent_cat_id').change -> 
-  $('<%= escape_javascript(render(:partial => sub_cats)) %>').appendTo('#sub_cat')
+<div class="pad10">
+	<%= label :business, "Sub Category" %><br />
+	<%= collection_select("business", "child_cat_id", @categories, :child_cat_id, :title) %>
+</div>
+

@@ -24,3 +24,20 @@ $(function(){ // &lt;&lt;JQUERY after dom is loaded event
 		notify(flash_message);
 	}
 });
+
+//$(function() {
+//    $("#business_parent_cat_id").change(function() {
+//        $.ajax({url: '/manager/business_sub_cats',
+//        data: 'id=' + this.value,
+//        dataType: 'script'})
+//    });
+//});
+$(function() {
+    $('#business_parent_cat_id').change(function(event) {
+        $.post('/manager/business_sub_cats?id='+$(this).val(), { selected: $('#business_parent_cat_id').val() },
+            function(data) {
+                $('#sub_cat').html(data);
+            }
+        );            
+    }); 
+});
