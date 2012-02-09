@@ -32,6 +32,7 @@ class ManagerController < ApplicationController
   # POST /categories
   def categories_create
     @category = Category.new(params[:category])
+    @categories = Category.all
 
     respond_to do |format|
       if @category.save
@@ -63,7 +64,7 @@ class ManagerController < ApplicationController
     @category.destroy
 
     respond_to do |format|
-      format.html { redirect_to(businesses_manager_url) }
+      format.html { redirect_to(categories_manager_url, :notice => 'Category was successfully deleted.') }
     end
   end
 
@@ -99,7 +100,7 @@ class ManagerController < ApplicationController
       if @coupon.save
         format.html { redirect_to businesses_manager_url, notice: 'Coupon was successfully created.' }
       else
-        format.html { render action: "coupon_new" }
+        format.html { redirect_to(manager_new_coupons_url, :error => 'There was a problem creating coupon.') }
       end
     end
   end
@@ -110,9 +111,9 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       if @coupon.update_attributes(params[:coupon])
-        format.html { redirect_to manager_edit_coupons_path(@coupon), notice: 'Coupon was successfully updated.' }
+        format.html { redirect_to manager_edit_coupons_path(@coupon), :notice => 'Coupon was successfully updated.' }
       else
-        format.html { render action: "coupon_edit" }
+        format.html { render action: "coupon_edit", :error => 'There was a problem updating the coupon.' }
       end
     end
   end
@@ -123,7 +124,7 @@ class ManagerController < ApplicationController
     @coupon.destroy
 
     respond_to do |format|
-      format.html { redirect_to businesses_manager_url }
+      format.html { redirect_to(coupons_manager_url, :notice => 'Coupon has been deleted.') }
     end
   end
 
@@ -185,7 +186,7 @@ class ManagerController < ApplicationController
     @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to(businesses_manager_url) }
+      format.html { redirect_to(businesses_manager_url, :notice => 'Business has been deleted.') }
     end
   end
 
@@ -210,8 +211,7 @@ class ManagerController < ApplicationController
   end
   
   def business_sub_cats
-  	@categories = Category.find(:all, :conditions => ["parent_cat_id=?", params[:id]])
-	
+  	@categories = Category.find(:all, :conditions => ["parent_cat_id=?", params[:id]])	
 	render :layout => false 
   end
 
@@ -255,7 +255,7 @@ class ManagerController < ApplicationController
     @business.destroy
 
     respond_to do |format|
-      format.html { redirect_to(businesses_manager_url) }
+      format.html { redirect_to(businesses_manager_url, :notice => 'Business has been deleted.') }
     end
   end
   
@@ -317,7 +317,7 @@ class ManagerController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(businesses_manager_url) }
+      format.html { redirect_to(users_manager_url, :error => 'User has been deleted.') }
     end
   end
 

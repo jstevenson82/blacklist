@@ -1,4 +1,5 @@
 <div class="comment">
-  <em>on <%= comment.created_at.strftime('%b %d, %Y at %I:%M %p') %></em>
+<% @user = User.find(comment.user_id)%>
+  <em>Created by <%= @user.username %> on <%= comment.created_at.strftime('%b %d, %Y at %I:%M %p') %></em>
   <%= simple_format comment.body %>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207023649) do
+ActiveRecord::Schema.define(:version => 20120208190127) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20120207023649) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment_type"
   end
 
   create_table "coupons", :force => true do |t|
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20120207023649) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "phone"
+    t.string   "time_zone"
   end
 
 end

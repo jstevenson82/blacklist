@@ -32,6 +32,10 @@
     <%= date_select 'user', 'birthday', :start_year => 1950, :order => [ :month, :day, :year ] %>
   </div>
   <div class="pad10">
+    <%= f.label :time_zone %><br />
+	<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
+  </div>
+  <div class="pad10">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </div>

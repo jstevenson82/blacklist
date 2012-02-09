@@ -1,0 +1,21 @@
+<h3>Add your comment:</h3>
+
+<%= form_for @comment, :url => create_comment_path,  :remote => true do |f| %>
+  <div class="pad10">
+    <%= f.label :body, "Comment" %><br />
+    <%= f.text_area :body, :cols => 20 %>
+  </div>
+  
+  <div class="pad10">
+    <%= f.label :rating %><br />
+    <%= f.select :rating, [['1',1],['2',2],['3',3],['4',4],['5',5]] %>
+  </div>
+  
+  <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="comment[item_id]" value="<%= @business.id %>">
+  <input type="hidden" name="comment[comment_type]" value="business">
+  <p><%= f.submit %><a id="popupContactClose" class="blackButton right">Cancel</a></p>
+<% end %>
+
+<br />
+

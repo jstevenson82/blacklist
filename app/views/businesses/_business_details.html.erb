@@ -25,7 +25,7 @@
 			<a href="#" class="blueButtonSM">bookmark</a>
 		</li>
 		<li>
-			<a href="#" class="blueButtonSM">write review</a>
+			<a href="#" class="blueButtonSM"  id="button">write review</a>
 		</li>
 	</ul>
 	<ul id="business-hours">
@@ -101,25 +101,34 @@
 		<div id="tabs">
 			<ul>
 				<li>
-					<a href="#tabs-1">about business</a>
+					<a href="#details">about business</a>
 				</li>
 				<li>
 					<a href="#tabs-2">photo(s)</a>
 				</li>
-				<li>
-					<a href="#tabs-3">coupon(s)</a>
-				</li>
-				<li>
-					<a href="#tabs-4">Review(s)</a>
-				</li>
+				<% if @coupons.count > 0 %>
+					<li>
+						<a href="#coupons">coupon(s)</a>
+					</li>
+				<% end %>
+				<% if @comments.count > 0 %>
+					<li>
+						<a href="#comment_view">Review(s)</a>
+					</li>
+				<% end %>
 			</ul>
-			<div id="tabs-1">
+			<div id="details">
 				<p>
 					<strong>Year established:</strong>&nbsp;<%= @business.year_established %>
 				</p>
 				<p>
 					<strong>Payment methods:</strong>&nbsp;<%= @business.payment_method %>
 				</p>
+				<% if !@business.parking.empty? %>
+					<p>
+						<strong>Payment parking:</strong>&nbsp;<%= @business.parking %>
+					</p>
+				<% end %>
 			</div>
 			<div id="tabs-2">
 
@@ -127,78 +136,23 @@
 					Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
 				</p>
 			</div>
-			<div id="tabs-3">
-				<div class="coupon pad10 marb10">
-					<div class="title">
-						Half off any single service
-					</div>
-					<div class="body">
-						Half off any single service. Half off any single service. Half off any single service. Half off any single service.
-					</div>
-					<div class="expire">
-						<strong>expires:</strong>&nbsp;10/11/2012
-					</div>
-					<div class="right">
-						<a href="#" class="orangeButton">Print</a>
-					</div>
-					<div class="clear">
+			<% if @coupons.count > 0 %>
+				<div id="coupons">
+					<%= render 'business_coupons' %>
+				</div>
+			<% end %>
+			<% if @comments.count > 0 %>
+				<div id="comment_view">
+					<div id="comments">
+					  <%= render @comments %>
 					</div>
 				</div>
-				<div class="coupon pad10 marb10">
-					<div class="title">
-						Half off any single service
-					</div>
-					<div class="body">
-						Half off any single service. Half off any single service. Half off any single service. Half off any single service.
-					</div>
-					<div class="expire">
-						<strong>expires:</strong>&nbsp;10/11/2012
-					</div>
-					<div class="right">
-						<a href="#" class="orangeButton">Print</a>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
-				<div class="coupon pad10 marb10">
-					<div class="title">
-						Half off any single service
-					</div>
-					<div class="body">
-						Half off any single service. Half off any single service. Half off any single service. Half off any single service.
-					</div>
-					<div class="expire">
-						<strong>expires:</strong>&nbsp;10/11/2012
-					</div>
-					<div class="right">
-						<a href="#" class="orangeButton">Print</a>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
-				<div class="coupon pad10 marb10">
-					<div class="title">
-						Half off any single service
-					</div>
-					<div class="body">
-						Half off any single service. Half off any single service. Half off any single service. Half off any single service.
-					</div>
-					<div class="expire">
-						<strong>expires:</strong>&nbsp;10/11/2012
-					</div>
-					<div class="right">
-						<a href="#" class="orangeButton">Print</a>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
-			</div>
-			<div id="tabs-4">
-
-				<p>
-					Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
-				</p>
-			</div>
+			<% end %>
 		</div>
+		<div id="popupContact">
+			<%= render 'comment_form' %>
+		</div>
+		<div id="backgroundPopup"></div>
 	</div><!-- End demo -->
 </div><!-- ./bl-details -->
+

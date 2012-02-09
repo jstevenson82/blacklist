@@ -10,6 +10,11 @@ Blacklist::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
   
   match '/businesses/:catid/:title.html' => 'businesses#index', :as => :businesses_by_cat
+  match '/business/:id/:title.html' => 'businesses#show', :as => :view_business
+  match '/business/:id' => 'businesses#show', :as => :view_business_comments
+  match '/businesses/businesses_create_comment' => 'businesses#businesses_create_comment', :as => :create_comment
+    
+  match '/coupons' => 'coupons#index', :as => :view_coupons
   
     # *********   Manager Section   *********
   match '/manager/businesses' => 'manager#businesses_index', :as => :businesses_manager

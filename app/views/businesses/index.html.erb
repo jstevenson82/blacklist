@@ -1,11 +1,12 @@
-
+<span class="pad10 display_block clear">We've found <%= @businesses.count %> business(es)</span>
+	
 <% @businesses.each do |business| %>
 
 	<% if business.listinglevel == 120 %>
 	
 		<div id="featured_listing" class="business_listting">
 	    	<div class="pad10">
-	    		<div class="title"><%= link_to business.name, business_path(business) %></div>
+	    		<div class="title"><%= link_to business.name, view_business_path(business, :title => business.name.gsub(/\s/,"-").gsub("\"","")) %></div>
 	            <div class="address clear"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
 	           	<div class="phone"><%= business.phone %></div>
 	        </div>
@@ -20,7 +21,7 @@
 	
 		<div id="basic_listing" class="business_listting <%=cycle('cycle_off', 'cycle_on')%>">
 			<div class="details">
-				<div class="title"><%= link_to business.name, business_path(business) %></div>
+				<div class="title"><%= link_to business.name, view_business_path(business, :title => business.name.gsub(/\s/,"-").gsub("\"","")) %></div>
 				<div class="address clear"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
 				<div class="phone"><%= business.phone %></div>
 			</div>
