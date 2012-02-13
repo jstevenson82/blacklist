@@ -8,15 +8,15 @@ class BusinessesController < ApplicationController
 
     if params[:catid].nil?
     	@categories = Category.find(:all, :conditions => ["parent_cat_id=0"])
-    	@businesses = Business.find(:all, :order => 'listinglevel DESC, name ASC')
+    	@businesses = Business.find(:all, :conditions => ["status=1"], :order => 'listinglevel DESC, name ASC')
     else
     	@category_count = Category.count(:all, :conditions => ["parent_cat_id=?", params[:catid]])
     	if @category_count > 0
     		@categories = Category.find(:all, :conditions => ["parent_cat_id=?", params[:catid]])
-    		@businesses = Business.find(:all, :order => 'listinglevel DESC, name ASC', :conditions => ["parent_cat_id=?", params[:catid]])
+    		@businesses = Business.find(:all, :order => 'listinglevel DESC, name ASC', :conditions => ["status=1 and parent_cat_id=?", params[:catid]])
     	else
     		@categories = Category.find(:all, :conditions => ["child_cat_id=?", params[:catid]])
-    		@businesses = Business.find(:all, :order => 'listinglevel DESC, name ASC', :conditions => ["child_cat_id=?", params[:catid]])
+    		@businesses = Business.find(:all, :order => 'listinglevel DESC, name ASC', :conditions => ["status=1 and child_cat_id=?", params[:catid]])
     	end
     end 
     
@@ -43,9 +43,13 @@ class BusinessesController < ApplicationController
   def businesses_create_comment
     @comment = Comment.new(params[:comment])
 
-    @comment.save
-
-    respond_with @comment, :location => view_business_comments_path(@comment.item_id)
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to(request.referer, :notice => 'Comment has been successfully posted.') }
+      else
+        format.html { redirect_to(request.fullpath, :error => 'There was an error posting comment.') }
+      end
+    end
   end
 
 end

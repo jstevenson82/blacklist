@@ -99,7 +99,11 @@
     <%= f.label :listinglevel %><br />
     <%= f.select :listinglevel, [['Premium',120],['Standard',110],['Free',100]] %>
   </div>
-  <div class="actions">
-    <%= f.submit "Update Business"%>
+  <div class="pad10">
+    <%= f.label :status %><br />
+    <%= f.select :status, [['Active',1],['Inactive',0]] %>
+  </div>
+  <div class="actions pad10">
+    <%= f.submit "Update Business", :class => "left clear"%>
   </div>
 <% end %>

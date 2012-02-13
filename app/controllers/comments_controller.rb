@@ -4,12 +4,26 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
   end
+  
+  def new
+  	@comment = Comment.new
+  	@item_id = params[:item_id]
+  	@comment_type = params[:comment_type]
+  	
+  	respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
 
   def create
     @comment = Comment.new(params[:comment])
 
-    @comment.save
-
-    respond_with @comment, :location => comments_url
+    respond_to do |format|
+      if @bookmark.save
+        format.html { redirect_to(@bookmark, :notice => 'Bookmark was successfully created.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
   end
 end

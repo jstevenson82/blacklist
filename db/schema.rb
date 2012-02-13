@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120208190127) do
+ActiveRecord::Schema.define(:version => 20120213184409) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120208190127) do
     t.datetime "updated_at"
     t.string   "website"
     t.integer  "listinglevel"
+    t.integer  "status",           :default => 1, :null => false
   end
 
   create_table "businesses_in_categories", :force => true do |t|
@@ -96,6 +97,23 @@ ActiveRecord::Schema.define(:version => 20120208190127) do
     t.date     "expire"
     t.string   "exclusion"
     t.string   "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "b_id"
+    t.string   "title"
+    t.text     "body"
+    t.string   "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "services", :force => true do |t|
+    t.string   "b_id"
+    t.string   "title"
+    t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

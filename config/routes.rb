@@ -1,13 +1,15 @@
 Blacklist::Application.routes.draw do
 
-  resources :businesses_in_categories
+  #resources :businesses_in_categories
 
-  resources :coupons, :businesses, :comments, :users, :blogs, :articles, :bookmarks, :categories, :users, :user_sessions
+  resources :services, :products, :coupons, :businesses, :comments, :users, :blogs, :articles, :bookmarks, :categories, :users, :user_sessions
   
   root :to => "home#index", :as => :homepage
   
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
+  
+  match '/comments/:item_id/new/:comment_type' => 'comments#new', :as => :post_comment
   
   match '/businesses/:catid/:title.html' => 'businesses#index', :as => :businesses_by_cat
   match '/business/:id/:title.html' => 'businesses#show', :as => :view_business
@@ -46,12 +48,34 @@ Blacklist::Application.routes.draw do
   match '/manager/new_users' => 'manager#user_new', :as => :manager_new_users
   match '/manager/:id/destroy_users' => 'manager#user_destroy', :as => :manager_destroy_users
   
-  match '/manager/coupons' => 'manager#coupons_index', :as => :coupons_manager
+  match '/manager/:b_id/coupons' => 'manager#coupons_index', :as => :coupons_manager
   match '/manager/:id/update_coupons' => 'manager#coupons_update', :as => :manager_update_coupons
   match '/manager/create_coupons' => 'manager#coupons_create', :as => :manager_create_coupons
   match '/manager/:id/edit_coupons' => 'manager#coupons_edit', :as => :manager_edit_coupons
   match '/manager/:id/new_coupons' => 'manager#coupons_new', :as => :manager_new_coupons
   match '/manager/:id/destroy_coupons' => 'manager#coupons_destroy', :as => :manager_destroy_coupons
+  
+  match '/manager/:b_id/services' => 'manager#services_index', :as => :services_manager
+  match '/manager/:id/update_services' => 'manager#services_update', :as => :manager_update_services
+  match '/manager/create_services' => 'manager#services_create', :as => :manager_create_services
+  match '/manager/:id/edit_services' => 'manager#services_edit', :as => :manager_edit_services
+  match '/manager/:b_id/new_services' => 'manager#services_new', :as => :manager_new_services
+  match '/manager/:id/destroy_services' => 'manager#services_destroy', :as => :manager_destroy_services
+  
+  match '/manager/:b_id/products' => 'manager#products_index', :as => :products_manager
+  match '/manager/:id/update_products' => 'manager#products_update', :as => :manager_update_products
+  match '/manager/create_products' => 'manager#products_create', :as => :manager_create_products
+  match '/manager/:id/edit_products' => 'manager#products_edit', :as => :manager_edit_products
+  match '/manager/:b_id/new_products' => 'manager#products_new', :as => :manager_new_products
+  match '/manager/:id/destroy_products' => 'manager#products_destroy', :as => :manager_destroy_products
+  
+  match '/manager/:b_id/images' => 'manager#images_index', :as => :images_manager
+  match '/manager/:id/update_images' => 'manager#images_update', :as => :manager_update_images
+  match '/manager/create_images' => 'manager#images_create', :as => :manager_create_images
+  match '/manager/:id/edit_images' => 'manager#images_edit', :as => :manager_edit_images
+  match '/manager/:b_id/new_images' => 'manager#images_new', :as => :manager_new_images
+  match '/manager/:id/destroy_images' => 'manager#images_destroy', :as => :manager_destroy_images
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

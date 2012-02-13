@@ -6,4 +6,6 @@ class Comment < ActiveRecord::Base
     #t.datetime "created_at"
     #t.datetime "updated_at"
     #t.string   "comment_type"
+    
+    validates_presence_of :rating, :body
 end

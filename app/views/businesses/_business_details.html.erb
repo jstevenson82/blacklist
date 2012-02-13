@@ -25,7 +25,7 @@
 			<a href="#" class="blueButtonSM">bookmark</a>
 		</li>
 		<li>
-			<a href="#" class="blueButtonSM"  id="button">write review</a>
+			<%= link_to "write a review", post_comment_path( @business.id, "business" ), :class => "blueButtonSM" %>
 		</li>
 	</ul>
 	<ul id="business-hours">
@@ -149,10 +149,6 @@
 				</div>
 			<% end %>
 		</div>
-		<div id="popupContact">
-			<%= render 'comment_form' %>
-		</div>
-		<div id="backgroundPopup"></div>
 	</div><!-- End demo -->
 </div><!-- ./bl-details -->
 

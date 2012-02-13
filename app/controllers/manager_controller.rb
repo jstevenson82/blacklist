@@ -70,7 +70,9 @@ class ManagerController < ApplicationController
 
   # GET /coupons
   def coupons_index
-    @coupons = Coupon.all
+  	@business = Business.find(params[:b_id])
+    @coupons = Coupon.find(:all, :conditions => ["b_id=?", @business.id])
+    @coupons = @coupons.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,8 +81,8 @@ class ManagerController < ApplicationController
 
   # GET /coupons/1/new
   def coupons_new
+  	@business = Business.find(params[:id])
     @coupon = Coupon.new
-    @business_id = params[:id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -89,7 +91,8 @@ class ManagerController < ApplicationController
 
   # GET /coupons/1/edit
   def coupons_edit
-    @coupon = Coupon.find(params[:id])
+  	@coupon = Coupon.find(params[:id])
+  	@business = Business.find(@coupon.b_id)    
   end
 
   # POST /coupons
@@ -98,7 +101,7 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to businesses_manager_url, notice: 'Coupon was successfully created.' }
+        format.html { redirect_to coupons_manager_path(@coupon.b_id), notice: 'Coupon was successfully created.' }
       else
         format.html { redirect_to(manager_new_coupons_url, :error => 'There was a problem creating coupon.') }
       end
@@ -125,6 +128,133 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(coupons_manager_url, :notice => 'Coupon has been deleted.') }
+    end
+  end
+
+  # GET /products
+  def products_index
+  	@business = Business.find(params[:b_id])
+    @products = Product.find(:all, :conditions => ["b_id=?", @business.id])
+    @products = @products.paginate(:page => params[:page], :per_page => 10)    
+
+    respond_to do |format|
+      format.html 
+    end
+  end
+
+  # GET /products/new
+  def products_new
+  	@business = Business.find(params[:b_id])
+    @product = Product.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  # GET /products/1/edit
+  def product_edit
+    @product = Product.find(params[:id])
+  end
+
+  # POST /products
+  def products_create
+    @product = Product.new(params[:product])
+
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to(products_manager_path(@product.b_id), :notice => 'Product was successfully added.') }
+      else
+        format.html { render :action => "products_new" }
+        flash[:error] = 'There was an error adding product.'
+      end
+    end
+  end
+
+  # PUT /products/1
+  def products_update
+    @product = Product.find(params[:id])
+
+    respond_to do |format|
+      if @product.update_attributes(params[:product])
+        format.html { redirect_to(manager_edit_products_path(@product), :notice => 'Product was successfully updated.') }
+      else
+        format.html { render :action => "products_edit" }
+        flash[:error] = 'There was an error updating product.'
+      end
+    end
+  end
+
+  # DELETE /products/1
+  def products_destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(products_manager_url, :notice => 'Product was successfully deleted.') }
+    end
+  end
+
+  # GET /services
+  def services_index
+  	@business = Business.find(params[:b_id])
+    @services = Service.find(:all, :conditions => ["b_id=?", @business.id])
+    @services = @services.paginate(:page => params[:page], :per_page => 10)  
+
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  # GET /services/1/new
+  def services_new
+  	@business = Business.find(params[:b_id])
+    @service = Service.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  # GET /services/1/edit
+  def services_edit
+  	@service = Service.find(params[:id])
+  	@business = Business.find(@service.b_id)    
+  end
+
+  # POST /services
+  def services_create
+    @service = Service.new(params[:service])
+
+    respond_to do |format|
+      if @service.save
+        format.html { redirect_to products_manager_path(@service.b_id), notice: 'Service was successfully added.' }
+      else
+        format.html { redirect_to(manager_new_services_url, :error => 'There was a problem creating service.') }
+      end
+    end
+  end
+
+  # PUT /services/1
+  def services_update
+    @service = Service.find(params[:id])
+
+    respond_to do |format|
+      if @service.update_attributes(params[:service])
+        format.html { redirect_to manager_edit_services_path(@service), :notice => 'Service was successfully updated.' }
+      else
+        format.html { render action: "services_edit", :error => 'There was a problem updating the service.' }
+      end
+    end
+  end
+
+  # DELETE /services/1
+  def services_destroy
+    @service = Service.find(params[:id])
+    @service.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(services_manager_url, :notice => 'Service has been deleted.') }
     end
   end
 
@@ -250,14 +380,14 @@ class ManagerController < ApplicationController
   end
 
   # DELETE /businesses/1
-  def businesses_destroy
-    @business = Business.find(params[:id])
-    @business.destroy
+  #def businesses_destroy
+  #  @business = Business.find(params[:id])
+  #  @business.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(businesses_manager_url, :notice => 'Business has been deleted.') }
-    end
-  end
+  #  respond_to do |format|
+  #    format.html { redirect_to(businesses_manager_url, :notice => 'Business has been deleted.') }
+  #  end
+  #end
   
   # GET /users
   def user_index

@@ -1,0 +1,24 @@
+<h1><%= @business.name %> services</h1>
+
+<table class="clear" cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+  </tr>
+
+<% @services.each do |service| %>
+  <tr>
+    <td><%= link_to service.title, edit_service_path(service) %></td>
+    <td><%= service.body %></td>
+    <td>><%= link_to "Delete", manager_destroy_services_path(service.id), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @services %>
+</div>
+<div class="clear"></div>
+<%= link_to 'New Service', manager_new_services_path(@business.id) %> | 
+<%= link_to 'Business Home', businesses_manager_path %>

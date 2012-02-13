@@ -1,5 +1,5 @@
-<span class="pad10 display_block clear">We've found <%= @businesses.count %> business(es)</span>
-	
+<span class="pad10 display_block clear business_listing_count">We've found <%= @businesses.count %> business(es)</span>
+
 <% @businesses.each do |business| %>
 
 	<% if business.listinglevel == 120 %>
@@ -10,9 +10,11 @@
 	            <div class="address clear"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
 	           	<div class="phone"><%= business.phone %></div>
 	        </div>
-			<div class="pad10 left clear">								
-				<a href="#" class="blueButtonSM left">visit website</a>
-				<a href="#" class="blueButtonSM left">write a review</a>
+			<div class="pad10 left clear">	
+				<% if !business.website.empty? %>							
+					<a href="#" class="blueButtonSM left">visit website</a>
+				<% end %>
+				<%= link_to "write a review", post_comment_path( business, "business" ), :class => "blueButtonSM left" %>
 			</div>
 				<div class="clear"></div>
 		</div>
@@ -26,7 +28,7 @@
 				<div class="phone"><%= business.phone %></div>
 			</div>
 			<div class="review">
-				<a href="#" class="maroonButtonSM">write a review</a>
+				<%= link_to "write a review", post_comment_path( business, "business" ), :class => "maroonButtonSM" %>
 			</div>
 			<div class="clear"></div>
 		</div>

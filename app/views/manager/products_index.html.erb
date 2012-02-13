@@ -1,0 +1,28 @@
+<h1><%= @business.name %> Products</h1>
+
+<table class="clear" cellspacing="10" width="700px">
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= link_to product.title, edit_product_path(product) %></td>
+    <td><%= product.body %></td>
+    <td><%= product.price %></td>
+    <td></td>
+    <td><%= link_to 'Delete', manager_destroy_products_path(product.id), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="paginate-style">
+	<%= will_paginate @products %>
+</div>
+<div class="clear"></div>
+<%= link_to 'New Product', manager_new_products_path(@business.id) %> | 
+<%= link_to 'Business Home', businesses_manager_path %>

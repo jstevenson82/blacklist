@@ -1,5 +1,6 @@
-<div class="comment">
+<fieldset class="mar10">
 <% @user = User.find(comment.user_id)%>
-  <em>Created by <%= @user.username %> on <%= comment.created_at.strftime('%b %d, %Y at %I:%M %p') %></em>
-  <%= simple_format comment.body %>
-</div>
+	<legend><%= @user.username %></legend> 
+	<%= simple_format comment.body %>
+  	<br/><em>Posted on <%= comment.created_at.strftime('%b %d, %Y at %I:%M %p') %></em>
+</fieldset>
