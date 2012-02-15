@@ -44,6 +44,7 @@ a.logout { color:#000 !important; margin:0px; padding:0px !important; }
 #breadcrumbs a:hover { text-decoration: underline; color:#000000; }
 
 #bl-header { border-bottom:2px solid #ccc; height: 100px; }
+#bl-header a { border:0px; }
 #bl-contact, #bl-services { width: 940px; padding: 10px 0; float:left; }
 #bl-listings, #bl-home, #bl-details { width: 920px; padding: 10px 20px; float:left; }
 #bl-footer { border-top:2px solid #ccc; height: 30px; width:100%; float:left; }
@@ -83,6 +84,10 @@ fieldset { background-color: #EBEBEB; border: 1px solid #C0C0C0; float: none !im
 #center_bottom_container { margin:0px auto; float:none !important; width:840px; }
 
 #bottom_container { width:900px; }
+
+.get-noticed { width:750px; float:none !important; margin:0 auto; font-weight: normal !important; }
+.get-noticed th { font-weight:bold; font-size:19px; color:#706658; text-align:center; }
+.packageContentHeading { color:#ff0000; font-weight:bold; font-size:16px; }
 
 /***********************
  ******** Index ********
@@ -469,6 +474,7 @@ li.category { padding:5px 0 5px 5px; width:100%; }
 	line-height: 18px; 
 }
 #b_results #featured_listing a { color:#2A6AB4; } 
+#b_results #featured_listing .feat_list_details { padding:10px; float:left; }
 #b_results #basic_listing {  border-left: 1px solid #E5E4E2; margin-top: 10px; }
 
 #bl-listings #right_rail { float:left; width:270px; }

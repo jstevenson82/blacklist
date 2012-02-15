@@ -20,7 +20,7 @@
     <td><%= business.state %></td>
     <td><%= link_to 'Products', products_manager_path(business.id) %></td>
     <td><%= link_to 'Services', services_manager_path(business.id) %></td>
-    <td><%= link_to 'Photos', manager_new_coupons_path(business.id) %></td>
+    <td><%= link_to 'Photos', images_manager_path(business.id) %></td>
     <td><%= link_to 'Coupons', coupons_manager_path(business.id) %></td>
   </tr>
 <% end %>

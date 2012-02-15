@@ -25,10 +25,21 @@ class Business < ActiveRecord::Base
     #t.string   "website"
     #t.integer  "listinglevel"
     #t.integer  "status" { 1 - on or 0 - off Default is 1 }  
+    #t.text     description
     
   #standard validations will go here
-  validates_presence_of :name, :phone, :city, :address, :state, :zip
+  validates_presence_of :name, :phone, :city, :address, :state, :zip, :description
   validates_uniqueness_of :name
+  
+  validates_attachment_size :photo, :less_than => 10.megabytes
+  
+  #paperclip
+  has_attached_file :photo,
+     :styles => {
+       :thumb  => "80x50#",
+       :feature  => "400x250#",
+       :lightbox  => "500x375#" 
+       }
   
   validate :presence_of_time
  

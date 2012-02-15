@@ -24,8 +24,7 @@
         <div id="page">
             <div id="manager">
                 <div id="bl-header">
-                    <%= image_tag('/images/cbllogo.png', :class => 'left') %>  
-		
+                    <%= link_to image_tag('/images/cbllogo.png', :border => 0), homepage_path, :class => 'left' %>		
                     <div id="nav-menu">
 						<%= render :partial => 'shared/top-nav' %>
                     </div><!-- ./nav-menu -->
@@ -35,7 +34,7 @@
                 <!-- ./bl-header -->
                 <div id="breadcrumbs">
                     <%= link_to "black list", homepage_path%>
-                    &raquo; 
+                    &raquo; <%= controller.action_name -%>
                     <div class="clear">
                     </div>
                 </div>

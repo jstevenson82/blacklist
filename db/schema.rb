@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120213184409) do
+ActiveRecord::Schema.define(:version => 20120214200734) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(:version => 20120213184409) do
     t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "bookmarks", :force => true do |t|
@@ -62,7 +66,13 @@ ActiveRecord::Schema.define(:version => 20120213184409) do
     t.datetime "updated_at"
     t.string   "website"
     t.integer  "listinglevel"
-    t.integer  "status",           :default => 1, :null => false
+    t.integer  "status",             :default => 1, :null => false
+    t.text     "description"
+    t.string   "feat_image"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "businesses_in_categories", :force => true do |t|
@@ -99,6 +109,18 @@ ActiveRecord::Schema.define(:version => 20120213184409) do
     t.string   "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "b_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "products", :force => true do |t|

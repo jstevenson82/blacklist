@@ -13,8 +13,7 @@
         <div id="page">
             <div id="manager">
                 <div id="bl-header">
-                    <%= image_tag('/images/cbllogo.png', :class => 'left') %>  
-		
+                    <%= link_to image_tag('/images/cbllogo.png', :border => 0), businesses_manager_path, :class => 'left' %>		
                     <div id="nav-menu">
 						<%= render :partial => 'shared/top-nav' %>
                     </div><!-- ./nav-menu -->

@@ -11,7 +11,7 @@
 
 <% @products.each do |product| %>
   <tr>
-    <td><%= link_to product.title, edit_product_path(product) %></td>
+    <td><%= link_to product.title, manager_edit_products_path(product) %></td>
     <td><%= product.body %></td>
     <td><%= product.price %></td>
     <td></td>

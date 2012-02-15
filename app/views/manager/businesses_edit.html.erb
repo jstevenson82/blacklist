@@ -1,4 +1,4 @@
-<%= form_for @business, :url => manager_update_businesses_path( @business )  do |f| %>
+<%= form_for @business, :url => manager_update_businesses_path( @business ), :html => { :multipart => true }  do |f| %>
   <% if @business.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@business.errors.count, "error") %> prohibited this business from being saved:</h2>
@@ -52,6 +52,10 @@
     <%= f.text_field :payment_method %>
   </div>
   <div class="pad10">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="pad10">
     <%= f.label :parking %><br />
     <%= f.text_area :parking %>
   </div>
@@ -98,6 +102,10 @@
   <div class="pad10">
     <%= f.label :listinglevel %><br />
     <%= f.select :listinglevel, [['Premium',120],['Standard',110],['Free',100]] %>
+  </div>
+  <div class="pad10">
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
   </div>
   <div class="pad10">
     <%= f.label :status %><br />

@@ -1,0 +1,39 @@
+                	<div class="clear"><!-- Top row -->
+						<div id="login" class="left">
+							<% if current_user %>
+							<% else %>
+							<div>
+								<%= render :partial => 'user_sessions/form' %>				
+							</div>	
+							<% end %>	
+						</div>
+	                    <div id="featured" class="right">
+	                        <%= render :partial => 'featured_businesses' %>	
+	                    </div>
+	                    <!-- ./featured -->
+						<div class="clear"></div>
+	                </div><!-- ./Top row -->
+					<div id="bottom_container" class="clear mar20">
+						 <div id="center_bottom_container">
+							 <div id="category_container" class="marR25">
+					        	<div class="middle_shadow"></div>
+					            <div class="category-title">categories</div>
+									<%= render :partial => '/businesses/categories' %>	
+					            <div class="bottom_shadow"></div>
+					        </div><!-- ./category_container -->
+							<div id="rc_articles_container" class="marR25">
+					        	<div class="middle_shadow"></div>
+					            <div class="category-title">recent articles</div>
+									<%= render :partial => 'articles' %>
+					            <div class="bottom_shadow"></div>
+					        </div><!-- ./rc_articles_container -->
+							<div id="rc_blogs_container" class="marR25">
+					        	<div class="middle_shadow"></div>
+					            <div class="category-title">recent blogs</div>
+									<%= render :partial => 'blogs' %>
+					            <div class="bottom_shadow"></div>
+					        </div><!-- ./rc_blogs_container -->
+						<div class="clear"></div>
+						</div><!-- ./center -->
+						<div class="clear"></div>
+					</div><!-- ./bottom_container -->

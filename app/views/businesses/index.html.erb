@@ -1,21 +1,23 @@
-<span class="pad10 display_block clear business_listing_count">We've found <%= @businesses.count %> business(es)</span>
+<span class="pad10 display_block clear business_listing_count">We've found <strong><%= @businesses.count %></strong> business(es)</span>
 
 <% @businesses.each do |business| %>
 
 	<% if business.listinglevel == 120 %>
 	
 		<div id="featured_listing" class="business_listting">
-	    	<div class="pad10">
+	    	<div class="feat_list_details">
 	    		<div class="title"><%= link_to business.name, view_business_path(business, :title => business.name.gsub(/\s/,"-").gsub("\"","")) %></div>
-	            <div class="address clear"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
+	            <div class="address"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
 	           	<div class="phone"><%= business.phone %></div>
-	        </div>
-			<div class="pad10 left clear">	
+	           	<div class="clear"></div>
 				<% if !business.website.empty? %>							
 					<a href="#" class="blueButtonSM left">visit website</a>
 				<% end %>
 				<%= link_to "write a review", post_comment_path( business, "business" ), :class => "blueButtonSM left" %>
 			</div>
+			<% if business.photo? %>
+				<div class="right pad10"><%= image_tag business.photo.url(:thumb) %></div>
+			<% end %>
 				<div class="clear"></div>
 		</div>
 		

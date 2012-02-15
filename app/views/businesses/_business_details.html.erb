@@ -18,7 +18,12 @@
 			</li>
 		<% end %>
 	</ul>
-	<img src="/images/Joe.JPG" class="pad10 left"/>
+	<% if @business.photo? %>
+		<%= image_tag @business.photo.url(:lightbox), :class => "pad10 left" %>
+	<% end %>
+	<% if !@business.photo? %>
+		<%= image_tag "/images/Joe.JPG", :class => "pad10 left" %>
+	<% end %>
 
 	<ul id="user-tools">
 		<li>
@@ -103,9 +108,11 @@
 				<li>
 					<a href="#details">about business</a>
 				</li>
-				<li>
-					<a href="#tabs-2">photo(s)</a>
-				</li>
+				<% if @images.count > 0 %>
+					<li>
+						<a href="#images">photo(s)</a>
+					</li>
+				<% end %>
 				<% if @coupons.count > 0 %>
 					<li>
 						<a href="#coupons">coupon(s)</a>
@@ -114,6 +121,11 @@
 				<% if @comments.count > 0 %>
 					<li>
 						<a href="#comment_view">Review(s)</a>
+					</li>
+				<% end %>
+				<% if @products.count > 0 %>
+					<li>
+						<a href="#products_view">Product(s)</a>
 					</li>
 				<% end %>
 			</ul>
@@ -129,13 +141,17 @@
 						<strong>Payment parking:</strong>&nbsp;<%= @business.parking %>
 					</p>
 				<% end %>
+				<% if !@business.description.empty? %>
+					<p>
+						<strong>Description:</strong>&nbsp;<%= @business.description %>
+					</p>
+				<% end %>
 			</div>
-			<div id="tabs-2">
-
-				<p>
-					Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.
-				</p>
-			</div>
+			<% if @images.count > 0 %>
+				<div id="images">
+					<%= render 'business_images' %>
+				</div>
+			<% end %>
 			<% if @coupons.count > 0 %>
 				<div id="coupons">
 					<%= render 'business_coupons' %>
@@ -146,6 +162,11 @@
 					<div id="comments">
 					  <%= render @comments %>
 					</div>
+				</div>
+			<% end %>
+			<% if @products.count > 0 %>
+				<div id="products_view">
+					<%= render 'business_products' %>
 				</div>
 			<% end %>
 		</div>

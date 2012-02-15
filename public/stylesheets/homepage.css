@@ -53,6 +53,7 @@
 	top:180px; left:0; 
 	height:70px; 
 	background: url('../images/transparent-bg.png'); 
+	width:400px;
 }
 #featured .info h2{ 
 	font-size:18px; font-family:Arial, Helvetica, sans-serif; 

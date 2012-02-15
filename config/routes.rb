@@ -1,10 +1,13 @@
 Blacklist::Application.routes.draw do
 
+  resources :images
+
   #resources :businesses_in_categories
 
   resources :services, :products, :coupons, :businesses, :comments, :users, :blogs, :articles, :bookmarks, :categories, :users, :user_sessions
   
-  root :to => "home#index", :as => :homepage
+  root :to => "home#home", :as => :homepage
+  match 'get-advertised' => 'home#advertise', :as => :advertise
   
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

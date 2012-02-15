@@ -32,8 +32,10 @@ class BusinessesController < ApplicationController
   def show
     @business = Business.find(params[:id])
     @coupons = Coupon.find(:all, :conditions => ["b_id=?", @business.id])
-    @comment = Comment.new(params[:comment])
     @comments = Comment.find(:all, :conditions => ["comment_type='business' and item_id=?", @business.id])
+    @products = Product.find(:all, :conditions => ["b_id=?", @business.id])
+    @images = Image.find(:all, :conditions => ["b_id=?", @business.id])
+
 
     respond_to do |format|
       format.html # show.html.erb

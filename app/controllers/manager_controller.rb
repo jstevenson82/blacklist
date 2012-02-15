@@ -111,6 +111,7 @@ class ManagerController < ApplicationController
   # PUT /coupons/1
   def coupons_update
     @coupon = Coupon.find(params[:id])
+    @business = Business.find(@coupon.b_id) 
 
     respond_to do |format|
       if @coupon.update_attributes(params[:coupon])
@@ -124,10 +125,11 @@ class ManagerController < ApplicationController
   # DELETE /coupons/1
   def coupons_destroy
     @coupon = Coupon.find(params[:id])
+    @business = Business.find(@coupon.b_id) 
     @coupon.destroy
 
     respond_to do |format|
-      format.html { redirect_to(coupons_manager_url, :notice => 'Coupon has been deleted.') }
+      format.html { redirect_to(coupons_manager_path(@business.id), :notice => 'Coupon has been deleted.') }
     end
   end
 
@@ -153,8 +155,9 @@ class ManagerController < ApplicationController
   end
 
   # GET /products/1/edit
-  def product_edit
+  def products_edit
     @product = Product.find(params[:id])
+    @business = Business.find(@product.b_id)
   end
 
   # POST /products
@@ -188,10 +191,11 @@ class ManagerController < ApplicationController
   # DELETE /products/1
   def products_destroy
     @product = Product.find(params[:id])
+    @business = Business.find(@product.b_id)
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to(products_manager_url, :notice => 'Product was successfully deleted.') }
+      format.html { redirect_to(products_manager_path(@business.id), :notice => 'Product was successfully deleted.') }
     end
   end
 
@@ -238,6 +242,7 @@ class ManagerController < ApplicationController
   # PUT /services/1
   def services_update
     @service = Service.find(params[:id])
+    @business = Business.find(@service.b_id)
 
     respond_to do |format|
       if @service.update_attributes(params[:service])
@@ -251,10 +256,11 @@ class ManagerController < ApplicationController
   # DELETE /services/1
   def services_destroy
     @service = Service.find(params[:id])
+    @business = Business.find(@service.b_id)
     @service.destroy
 
     respond_to do |format|
-      format.html { redirect_to(services_manager_url, :notice => 'Service has been deleted.') }
+      format.html { redirect_to(services_manager_path(@business.id), :notice => 'Service has been deleted.') }
     end
   end
 
@@ -348,6 +354,7 @@ class ManagerController < ApplicationController
   # GET /businesses/1/edit
   def businesses_edit
     @business = Business.find(params[:id])
+    @images = Image.find(:all, :conditions => ["b_id=?", @business.id])
     @categories = Category.all
   end
 
@@ -368,6 +375,8 @@ class ManagerController < ApplicationController
   # PUT /businesses/1
   def businesses_update
     @business = Business.find(params[:id])
+    @images = Image.find(:all, :conditions => ["b_id=?", @business.id])
+    @categories = Category.all
 
     respond_to do |format|
       if @business.update_attributes(params[:business])
@@ -448,6 +457,73 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(users_manager_url, :error => 'User has been deleted.') }
+    end
+  end
+
+  # GET /images
+  def images_index
+  	@business = Business.find(params[:b_id])
+    @images = Image.find(:all, :conditions => ["b_id=?", @business.id])
+    @images = @images.paginate(:page => params[:page], :per_page => 10)    
+
+    respond_to do |format|
+      format.html 
+    end
+  end
+
+  # GET /images/1/new
+  def images_new
+  	@business = Business.find(params[:b_id])
+    @image = Image.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  # GET /images/1/edit
+  def images_edit
+    @image = Image.find(params[:id])
+    @business = Business.find(@image.b_id)
+  end
+
+  # POST /images
+  def images_create
+    @image = Image.new(params[:image])
+    @business = Business.find(@image.b_id)
+
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to(images_manager_path(@image.b_id), :notice => 'Image was successfully added.') }
+      else
+        format.html { render :action => "images_new" }
+        flash[:error] = 'There was an error adding image.'
+      end
+    end
+  end
+
+  # PUT /images/1
+  def images_update
+    @image = Image.find(params[:id])
+
+    respond_to do |format|
+      if @image.update_attributes(params[:image])
+        format.html { redirect_to(manager_edit_images_path(@image), :notice => 'Image was successfully updated.') }
+      else
+        format.html { render :action => "images_edit" }
+        flash[:error] = 'There was an error updating product.'
+      end
+    end
+  end
+
+  # DELETE /images/1
+  def images_destroy
+    @image = Image.find(params[:id])
+    @business = Business.find(@image.b_id)
+    @image.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(images_manager_path(@business.id), :notice => 'Image was successfully deleted.') }
     end
   end
 

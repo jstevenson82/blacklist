@@ -1,0 +1,8 @@
+<% @products.each do |product| %>
+  <div class="left clear">
+    <%= product.title %><br/>
+    <%= product.body %><br/>
+    <strong><%= product.price %></strong>
+    <br/>
+  </div>
+<% end %>
