@@ -1,8 +1,28 @@
+<h3>comment(s) (<%= @comments.count %>)</h3>
 <% @comments.each do |comment| %>
-  <fieldset class="comment clear">
-
-   <legend>Name goes here <strong>Says:</strong></legend>
-    <p class="comment-body"><%= comment.body %></p>
-    <p class="info"><%= comment.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
-  </fieldset>
+	<div class="user-comment <%=cycle('cycle_off', 'cycle_on')%>">
+		<div class="item-details">
+			<div><%= comment.body %></div>
+			<div><%= comment.rating %></div>
+			<div class="pad10">Comment type: <strong><%= comment.comment_type %></strong></div>
+		
+			<p class="bookmarked-date">Created on <%= comment.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="right">
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_aboutyou.png", :class => "user_bookmarks_actions_image" ), "#" %>
+				<p>Edit Comment</p>
+			</div>
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), "#", :remote=> true %>
+				<p>Remove</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
 <% end %>
+
+

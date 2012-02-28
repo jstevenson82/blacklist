@@ -1,35 +1,24 @@
-<div id="blog-index">
-
-	<% @blogs.each do |blog| %>
-		<% @comment = Comment.find(:all, :conditions => [ "comment_type='blog' and item_id=?", blog.id ]) %>
-		<div class="blog-entry">
-		<div id="blog-header">
-			<div class="blog-date">
-			  <div class='blog-monthandday'><%= blog.created_at.strftime("%b %e") %></div>
-			  <div class='blog-time'><%= blog.created_at.strftime("%I:%M") %></div>
-			  <div class='blog-dayindicator'><%= blog.created_at.strftime("%p %Z") %></div>
-		  	</div>
-		  	<div class="blog-title-box">
-		  		<%= link_to truncate( blog.title, :length => 37), blog_path(blog, :title => blog.title.gsub(/\s/,"-").gsub("\"","")), :class => "blog-title" %>
-		  			<div class="blog-info">
-		  				<% @user = User.find(blog.user_id)%>
-		  				<span class="left">by <strong><%=@user.firstname %> <%= @user.lastname %></strong></span>
-		  				<span class="comment-count right">commet <strong><%= @comment.count %></strong></span>
-		  			</div>
-		  	</div>
-		  	<div class="clear"></div>
-		</div><!-- End blog-header -->
+<h3>blogs (<%= @blogs.count %>)</h3>
+<% @blogs.each do |blog| %>
+	<div class="user-blog <%=cycle('cycle_off', 'cycle_on')%>">
+		<div class="item-details">
+			<div class="business_name"><%= link_to blog.title, "#" %></div>
+			<div class="business_loc"><%= truncate( blog.body.gsub(/<.*?>/, "") , :length => 250 ) %></div>		
+			<p class="bookmarked-date">Created on <%= blog.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
+			<div class="clear"></div>
+		</div>
 		
-		<% if blog.photo.exists? then %>
-			<%= image_tag blog.photo.url(:show), :id => "blog-image" %>
-		<% end %>
-		
-		<div class="blog-body">
-		  <%= truncate( blog.body.gsub(/<.*?>/, "") , :length => 250 ) %>
-		  <%= link_to "read more", blog %><br/>
+		<div class="right">
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_aboutyou.png", :class => "user_bookmarks_actions_image" ), "#" %>
+				<p>Edit Blog</p>
+			</div>
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), "#", :remote=> true %>
+				<p>Remove</p>
+			</div>
+			<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
 	</div>
-	<% end %>
-
-</div>
+<% end %>

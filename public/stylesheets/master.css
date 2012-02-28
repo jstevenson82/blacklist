@@ -19,7 +19,7 @@ h1 { margin:10px 50px; }
     width: 1000px;
 }
 
-#homepage, #manager, #application {
+#homepage, #manager, #application, #user {
 	margin: 0 auto;
     overflow: hidden;
     width: 960px;
@@ -30,6 +30,10 @@ h1 { margin:10px 50px; }
 .right { float:right; }
 .alignRight { text-align: right; }
 .display_block { display:block; }
+
+a img, *:link img, *:visited img {
+    border: medium none;
+}
 
 #nav-menu { float:left; margin: 40px 0px 20px; }
 ul#menu  { list-style:none; list-style-type:none; display:inline; padding: 0; }
@@ -479,8 +483,8 @@ li.category { padding:5px 0 5px 5px; width:100%; }
 #b_results .title { font-size:14px; font-weight:bold; }
 #b_results .details { padding:10px 0px 10px 10px; float:left; width:280px; font-size:12px; line-height: 18px; }
 #b_results .review { padding:10px 10px 10px 0; float:right; }
-#b_results .cycle_on { background: none repeat scroll 0 0 #F3F3F3; }
-#b_results .cycle_off { background: none repeat scroll 0 0 #FFF; }
+.cycle_on { background: none repeat scroll 0 0 #F3F3F3; }
+.cycle_off { background: none repeat scroll 0 0 #FFF; }
 
 #b_results #featured_listing { 
 	background: none repeat scroll 0 0 #F1F6FC; 
@@ -525,6 +529,16 @@ ul#business-hours .on { background-color:#FFF7DF; }
 ul#business-hours .title { background-color:#363636; color:#fff; font-size: 16px; padding:5px; }
 
 ul#user-tools { list-style-type:none; float:left; padding:10px; display:block; }
+
+#user a { color:#666; text-decoration:none; }
+#user a:hover { color:#000; text-decoration:underline; }
+#user .item-details { width:450px; float:left; }
+#user .user-bookmark, #user .user-comment, #user .user-blog{ width:650px; float:none !important; margin:0 auto; border-left:1px solid #ccc; padding:10px; margin-top:10px; }
+#user .bookmarked-date { font-size:10px; padding:0px; color:#A3A1A1; }
+#user .business_name a { font-size:14px; }
+#user .business_phone { font-weight:bold;  }
+#user .user_bookmarks_actions { text-align: center; width: 100px; }
+#user .user_bookmarks_actions_image { margin: 0 10px 8px 0; width: 40px; }
 
 #m_menu { width:180px; float:left; margin: 30px 20px 0 10px; }
 #m_menu ul.menuitem { padding:0; margin:0;  width:100%; list-style:none; }

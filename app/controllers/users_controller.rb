@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.find(@user_id)
     @comments = Comment.find(:all, :conditions => ["user_id=?", @user_id])
     @blogs = Blog.find(:all, :conditions => ["user_id=?", @user_id])
+    @bookmarks = Bookmark.find(:all, :conditions => ["user_id=?", @user_id])
     
     respond_to do |format|
       format.html

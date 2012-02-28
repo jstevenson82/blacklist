@@ -1,0 +1,26 @@
+<h3>bookmarks (<%= @bookmarks.count %>)</h3>
+<% @bookmarks.each do |bookmark| %>
+	<div class="user-bookmark <%=cycle('cycle_off', 'cycle_on')%>">
+		<div class="item-details">
+			<% @business = Business.find( bookmark.b_id ) %>
+			<div class="business_name"><%= link_to @business.name, view_business_path(@business.id, :title => @business.name.gsub(/\s/,"-").gsub("\"","")) %></div>
+			<div class="business_loc"><%= @business.address %> <%= @business.city %>, <%= @business.state %> <%= @business.zip %></div>
+			<div class="business_phone"><%= @business.phone %></div>		
+			<p class="bookmarked-date">Bookmarked on <%= bookmark.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
+			<div class="clear"></div>
+		</div>
+		
+		<div class="right">
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_aboutyou.png", :class => "user_bookmarks_actions_image" ), view_business_path(@business.id, :title => @business.name.gsub(/\s/,"-").gsub("\"","")) %>
+				<p>See Business</p>
+			</div>
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), destroy_bookmark_path(bookmark.id, current_user.id), :remote=> true %>
+				<p>Remove</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+<% end %>

@@ -1,24 +1,6 @@
 class BookmarksController < ApplicationController
 
-  # GET /bookmarks/1
-  def list_bookmarks
-    @bookmark = Bookmark.find(:all,params[:id])
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
-  # GET /bookmarks/new
-  def bookmarks_new
-    @bookmark = Bookmark.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @bookmark }
-    end
-  end
-
+  
   # create /bookmarks
   def create
     @bookmark = Bookmark.new(params[:bookmark])
@@ -38,12 +20,13 @@ class BookmarksController < ApplicationController
   end
 
   # DELETE /bookmarks/1
-  def bookmarks_destroy
+  def destroy
     @bookmark = Bookmark.find(params[:id])
+    @bookmarks = Bookmark.find(:all, :conditions => ["user_id=?", params[:user_id]])
     @bookmark.destroy
 
     respond_to do |format|
-      format.html { redirect_to(bookmarks_url) }
+      format.js
     end
   end
 end

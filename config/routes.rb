@@ -12,7 +12,7 @@ Blacklist::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
  
-  match 'dashboard' => 'users#show', :as => :dashboard
+  match 'dashboard/:id-:title.html' => 'users#show', :as => :dashboard
   
   match '/comments/:item_id/new/:comment_type' => 'comments#new', :as => :post_comment
   
@@ -26,6 +26,7 @@ Blacklist::Application.routes.draw do
   match '/businesses/businesses_create_comment' => 'businesses#businesses_create_comment', :as => :create_comment
 
   match '/bookmark/create' => 'bookmarks#create', :as => :create_bookmark
+  match '/bookmark/:id/destroy/:user_id' => 'bookmarks#destroy', :as => :destroy_bookmark
     
   match '/coupons' => 'coupons#index', :as => :view_coupons
   
