@@ -41,3 +41,45 @@ $(function() {
         );            
     }); 
 });
+
+$(document).ready(function(){
+  $("#post-comments").click(function(){
+    $("#add-comments").toggle();
+  });
+});
+
+function limitChars(textid, limit, infodiv)
+{
+	var text = $('#'+textid).val(); 
+	var textlength = text.length;
+
+	if(textlength > limit){
+		$('#' + infodiv).html('You cannot write more then '+limit+' characters!');
+		$('#'+textid).val(text.substr(0,limit));
+		return false;
+	}else{
+		$('#' + infodiv).html('You have '+ (limit - textlength) +' characters left.');
+		return true;
+
+	}
+}
+
+$(function(){
+	$('#comment_body').keyup(function(){
+		limitChars('comment_body', 450, 'charlimitinfo');
+	})
+});
+
+$('a[data-remote=true]').click( function() {
+    
+    $.ajax({
+    	type: 'POST',
+    	url: this.href,
+    	//url: '/bookmarks/create?bookmark[b_id]=' + b_id + '&bookmark[user_id]=' + u_id,
+    	//data: 'bookmark[b_id]=' + b_id + '&bookmark[user_id]=' + u_id,
+    	success: function(data){eval(data);}
+    });
+    return false;
+});
+
+

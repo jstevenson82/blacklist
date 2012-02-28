@@ -19,7 +19,7 @@ h1 { margin:10px 50px; }
     width: 1000px;
 }
 
-#homepage, #manager {
+#homepage, #manager, #application {
 	margin: 0 auto;
     overflow: hidden;
     width: 960px;
@@ -85,8 +85,9 @@ fieldset { background-color: #EBEBEB; border: 1px solid #C0C0C0; float: none !im
 
 #bottom_container { width:900px; }
 
-.get-noticed { width:750px; float:none !important; margin:0 auto; font-weight: normal !important; }
+.get-noticed { width:650px; float:none !important; margin:0 auto; font-weight: normal !important; }
 .get-noticed th { font-weight:bold; font-size:19px; color:#706658; text-align:center; }
+.get-noticed table { margin:0px; padding:0px; }
 .packageContentHeading { color:#ff0000; font-weight:bold; font-size:16px; }
 
 /***********************
@@ -248,7 +249,7 @@ a.orangeButton:hover, a.maroonButtonSM:hover, a.blueButtonSM:hover, a.blueButton
 
 textarea { width: 480px; height: 100px; }
 
-textarea#comment_body { width: 280px; height: 100px; }
+textarea#comment_body { width: 500px; height: 200px; }
 
 .field_with_errors {
   padding: 2px;
@@ -426,17 +427,33 @@ pagination
 }
 
 #blog-container { clear:both; margin:10px; }
-#blog-header { float:left; clear:both; margin-bottom: 15px; color:#666; font-weight:bold; border:1px solid #666; width:550px; }
-#blog-header .blog-title { font-size: 27px; font-weight: normal; letter-spacing: -0.03em; line-height: 1em; padding: 10px 10px 0; display:block; }
-#blog-header .comment-count { padding:10px 0 10px 10px; color:#000; font-weight:normal; font-size: 11px; font-family: "Trebuchet MS",Arial,Helvetica,sans-serif; }
-#blog-header .blog-date { float:left; border-right:1px solid #666; text-align: center; }
-#blog-header .blog-month { font-size:15px; padding: 5px 10px 0; }
-#blog-header .blog-day { font-size:22px; padding:0 10px 5px; }
+#blog-index, #blog-show { clear:both; width: 555px; } 
+#blog-index .blog-entry, #blog-show .blog-entry { border-left:1px solid #666; border-right:1px solid #666; margin-bottom: 20px; }
+#blog-header { float:left; clear:both; margin-bottom: 15px; color:#666; font-weight:bold; /*border:1px solid #666;*/ width:550px; }
+#blog-header .blog-title { border-bottom: 1px solid #666; display: block; font-size: 21px; font-weight: bold; letter-spacing: -0.03em; line-height: 1em; padding: 5px 10px; }
+#blog-header  a:hover.blog-title { text-decoration: none !important; }
+#blog-header .blog-title-box { float:left; width:490px; }
+#blog-header .blog-info { font-size:11px; font-weight: normal; margin-top:5px; }
+#blog-header .comment-count { padding:0px; color:#000; font-weight:normal; font-size: 11px; font-family: "Trebuchet MS",Arial,Helvetica,sans-serif; margin-right:5px; }
+#blog-header .blog-date { float:left; text-align: center; }
+#blog-header .blog-monthandday { font-size:11px; padding: 5px 10px 0; }
+#blog-header .blog-time { font-size:14px; padding:0 10px 5px; }
+#blog-header .blog-dayindicator { font-size:10px; padding:0 10px 5px; color:#777676; }
 #blog-image { float:left; margin:10px 0; clear: both; }
-.blog-body { float:left; font-size:12px; clear: both; margin:10px 0; line-height: 1.6em; width:550px; }
+.blog-body { clear: both; float:left;font-size: 12px; line-height: 1.6em; margin-left: 10px; width: 520px; }
 .blog-body a { color:#000; font-weight:bold; text-decoration: none; }
 .blog-body a:hover { color:#666; font-weight:bold; text-decoration: underline; }
 img#blog-image { float:left; margin-bottom:10px; clear: both; width:550px; }
+
+#view-comments .comment { padding:5px 5px 4px; border:1px solid #BDC7D8; margin:0px 0px 10px 0px; background-color:#EDEFF4; }
+#comments-header { color: #2F6F57; font-size: 21px; margin: 10px; clear:both; display:block; }
+#comments-header #post-comments { float:left;}
+#comments-header #view-comments-count { float:right; }
+.comment-body { font-size:12px; line-height: 1.6em; }
+fieldset.comment { width:550px; }
+
+#new-comments { width:500px; margin:0px; padding:0px; }
+#new-comments-header { text-align:center; color: #2F6F57; font-size: 21px; margin: 10px; clear:both; display:block; }
 
 #category_container { width:250px; position:relative; background-color:#777676; float:left; font-weight:bold; }
 #rc_articles_container { width:250px; position:relative; background-color:#660000; float:left; font-weight:bold; }
@@ -518,4 +535,5 @@ ul#user-tools { list-style-type:none; float:left; padding:10px; display:block; }
 #manager a { color:#666; text-decoration:none; }
 #manager a:hover { color:#000; text-decoration:underline; }
 
-#manager .couponDesg { background-color: #FF0000; color: #FFFFFF; font-weight: bold;  padding: 2px;  text-align: right; }
+#application a { color:#666; text-decoration:none; }
+#application a:hover { color:#000; text-decoration:underline; }

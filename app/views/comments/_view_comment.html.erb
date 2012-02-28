@@ -1,0 +1,16 @@
+<div id="comments-header" class="marb10">
+	<button id="post-comments">Post a comment</button>
+	<% if @comments.count > 0 %>
+		<div id="view-comments-count">View comments (<%= @comments.count %>)</div>
+	<% end %>
+	<div class="clear"></div>
+</div>
+
+<% @comments.each do |comment| %>
+  <fieldset class="comment clear">
+
+   <legend>Name goes here <strong>Says:</strong></legend>
+    <p class="comment-body"><%= comment.body %></p>
+    <p class="info"><%= comment.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
+  </fieldset>
+<% end %>

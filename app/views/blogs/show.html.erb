@@ -1,20 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div id="blog-show">
 
-<p>
-  <b>Title:</b>
-  <%= @blog.title %>
-</p>
+		<% @comments = Comment.find(:all, :conditions => [ "comment_type='blog' and item_id=?", @blog.id ]) %>
+		<div class="blog-entry">
+		<div id="blog-header">
+			<div class="blog-date">
+			  <div class='blog-monthandday'><%= @blog.created_at.strftime("%b %e") %></div>
+			  <div class='blog-time'><%= @blog.created_at.strftime("%I:%M") %></div>
+			  <div class='blog-dayindicator'><%= @blog.created_at.strftime("%p %Z") %></div>
+		  	</div>
+		  	<div class="blog-title-box">
+		  		<%= link_to truncate( @blog.title, :length => 37), blog_path(@blog.id, :title => @blog.title.gsub(/\s/,"-").gsub("\"","")), :class => "blog-title" %>
+		  			<div class="blog-info">
+		  				<% @user = User.find(@blog.user_id)%>
+		  				<span class="left">by <strong><%=@user.firstname %> <%= @user.lastname %></strong></span>
+		  				<span class="comment-count right">commet <strong><%= @comments.count %></strong></span>
+		  			</div>
+		  	</div>
+		  	<div class="clear"></div>
+		</div><!-- End blog-header -->
+		
+		<% if @blog.photo.exists? then %>
+			<%= image_tag @blog.photo.url(:show), :id => "blog-image" %>
+		<% end %>
+		
+		<div class="blog-body">
+		  <%= @blog.body  %>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="view-comments" class="clear">
+		<%= render 'comments/view_comment' %>
+	</div>
 
-<p>
-  <b>Body:</b>
-  <%= @blog.body %>
-</p>
+</div>
 
-<p>
-  <b>User:</b>
-  <%= @blog.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+<div id="add-comments" class="clear" style="display:none;">
+	<%= render 'comments/form' %>
+</div>

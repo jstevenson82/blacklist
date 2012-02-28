@@ -1,0 +1,16 @@
+<% if !@bookmarked.eql? true %>
+
+	$('#flash').css("display", "block"); 
+	$('#flash').addClass("flash_html flash-sucess clear");
+	$("#flash").html("Bookmarked has been added!");
+	$("#bookmark_business").replaceWith("<strong>Bookmarked</strong>");
+
+<% else %>
+
+	$('#flash').css("display", "block"); 
+	$('#flash').addClass("flash_html flash-failure clear");
+    $("#flash").html("Business has already been bookmarked.");
+      
+	<!-- %= escape_javascript(render(:partial => 'error', :locals => {:flash => flash, :flush_flash => true})) % -->
+
+<% end %>

@@ -1,0 +1,20 @@
+<div id="tabs">
+	<ul>
+		<li><a href="#details">user profile</a></li>
+		<li><a href="#bookmark">bookmark(s)</a></li>
+		<li><a href="#comment">comment(s)</a></li>
+		<li><a href="#blog">blog(s)</a></li>
+	</ul>
+	<div id="details">
+		<%= render :partial => 'edit' %>
+	</div>
+	<div id="bookmark">
+		<h1>bookmark</h1>
+	</div>
+	<div id="comment">
+		<%= render :partial => 'user_comments' %>
+	</div>
+	<div id="blog">
+		<%= render :partial => 'user_blogs' %>
+	</div>
+</div><!-- End tabs -->

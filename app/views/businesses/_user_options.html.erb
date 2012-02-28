@@ -1,0 +1,21 @@
+<% if current_user %>
+
+	<% if !@bookmarked.eql? true %>
+		<li>
+			<%= link_to 'bookmark', "/bookmark/create?bookmark[b_id]=#{@business.id}&bookmark[user_id]=#{current_user.id}", :remote=> true, :class => 'blueButtonSM', :id => 'bookmark_business' %>
+		</li>
+	<% end %>
+	<li>
+		<%= link_to "write a review", post_comment_path( @business.id, "business" ), :class => "blueButtonSM" %>
+	</li>
+		
+<% else %>
+
+	<li>
+		<%= link_to 'bookmark', "#", :class => 'blueButtonSM', :id => 'bookmark_business', :onclick => 'alert("You must be logged in to use this feature.")' %>
+	</li>
+	<li>
+		<%= link_to "write a review", "#", :class => "blueButtonSM", :onclick => 'alert("You must be logged in to use this feature.")' %>
+	</li>
+
+<% end %>

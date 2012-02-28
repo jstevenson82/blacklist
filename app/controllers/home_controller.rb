@@ -10,8 +10,8 @@ class HomeController < ApplicationController
   
   def advertise
     respond_to do |format|
-      format.html
-    end
+      format.html { render :layout => "advertise" }
+    end   
   end
 
 end

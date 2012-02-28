@@ -1,0 +1,8 @@
+<% @comments.each do |comment| %>
+  <fieldset class="comment clear">
+
+   <legend>Name goes here <strong>Says:</strong></legend>
+    <p class="comment-body"><%= comment.body %></p>
+    <p class="info"><%= comment.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
+  </fieldset>
+<% end %>

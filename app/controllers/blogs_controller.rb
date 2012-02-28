@@ -13,9 +13,22 @@ class BlogsController < ApplicationController
   # GET /blogs/1.xml
   def show
     @blog = Blog.find(params[:id])
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
+    end
+  end
+  
+  def blogs_create_comment
+    @comment = Comment.new(params[:comment])
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to(request.referer, :notice => 'Comment has been successfully posted.') }
+      else
+        format.html { redirect_to(request.referer, :error => 'There was an error posting comment.') }
+      end
     end
   end
 

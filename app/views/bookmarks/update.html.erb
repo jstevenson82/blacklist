@@ -1,0 +1,8 @@
+<% if @bookmark.errors.any? %>
+
+<% else %>
+
+  $("#flash").append('<%= escape_javascript(render(:partial => 'error', :locals => {:flash => flash, :flush_flash => true})) %>');
+
+<% end %>
+

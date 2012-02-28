@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  layout "users"
   # GET /users/new
   def new
     @user = User.new
@@ -7,6 +8,17 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+    end
+  end
+
+  def show
+    @user_id = current_user.id
+    @user = User.find(@user_id)
+    @comments = Comment.find(:all, :conditions => ["user_id=?", @user_id])
+    @blogs = Blog.find(:all, :conditions => ["user_id=?", @user_id])
+    
+    respond_to do |format|
+      format.html
     end
   end
 

@@ -20,15 +20,20 @@ class BookmarksController < ApplicationController
   end
 
   # create /bookmarks
-  def bookmarks_create
+  def create
     @bookmark = Bookmark.new(params[:bookmark])
+    @bookmarked = false
 
-    respond_to do |format|
-      if @bookmark.save
-        format.html { redirect_to(@bookmark, :notice => 'Bookmark was successfully created.') }
-      else
-        format.html { render :action => "new" }
-      end
+	respond_to do |format|
+		
+	  if !Bookmark.exists?( :b_id => @bookmark.b_id, :user_id => current_user.id )
+	  	@bookmark.save
+	  	bookmarked = true
+	  	format.js
+	  else
+	  	bookmarked = false
+	  	format.js
+	  end
     end
   end
 

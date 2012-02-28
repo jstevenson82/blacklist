@@ -26,12 +26,7 @@
 	<% end %>
 
 	<ul id="user-tools">
-		<li>
-			<a href="#" class="blueButtonSM">bookmark</a>
-		</li>
-		<li>
-			<%= link_to "write a review", post_comment_path( @business.id, "business" ), :class => "blueButtonSM" %>
-		</li>
+		<%= render 'user_options' %>
 	</ul>
 	<ul id="business-hours">
 		<li class="title">
@@ -141,7 +136,7 @@
 						<strong>Payment parking:</strong>&nbsp;<%= @business.parking %>
 					</p>
 				<% end %>
-				<% if !@business.description.empty? %>
+				<% if !@business.description.blank? %>
 					<p>
 						<strong>Description:</strong>&nbsp;<%= @business.description %>
 					</p>

@@ -11,13 +11,21 @@ Blacklist::Application.routes.draw do
   
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
+ 
+  match 'dashboard' => 'users#show', :as => :dashboard
   
   match '/comments/:item_id/new/:comment_type' => 'comments#new', :as => :post_comment
+  
+  match '/blogs/:id/:title.html' => 'blogs#show', :as => :view_blog
+  match '/blogs/:id' => 'blogs#show', :as => :view_blog_error
+  match '/blogs/:id/blog_create_comment' => 'blogs#blogs_create_comment', :as => :blog_create_comment
   
   match '/businesses/:catid/:title.html' => 'businesses#index', :as => :businesses_by_cat
   match '/business/:id/:title.html' => 'businesses#show', :as => :view_business
   match '/business/:id' => 'businesses#show', :as => :view_business_comments
   match '/businesses/businesses_create_comment' => 'businesses#businesses_create_comment', :as => :create_comment
+
+  match '/bookmark/create' => 'bookmarks#create', :as => :create_bookmark
     
   match '/coupons' => 'coupons#index', :as => :view_coupons
   

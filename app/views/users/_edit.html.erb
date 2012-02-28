@@ -1,0 +1,45 @@
+<h1>Update Info</h1>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="pad10">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="pad10">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="pad10">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="pad10">
+    <%= f.label :birthday %><br />
+    <%= date_select 'user', 'birthday', :start_year => 1950, :order => [ :day, :month, :year ] %>
+  </div>
+  <div class="pad10">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+   <div class="pad10">
+    <%= f.label :time_zone %><br />
+	<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
+  </div> 
+  <input type="hidden" name="user[user_type]" value="<%= @user.user_type %>">
+
+  <div class="actions ">
+    <%= f.submit %>
+  </div>
+<% end %>

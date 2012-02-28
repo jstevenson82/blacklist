@@ -2,17 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Home > The Black List > Cincinnati, Ohio > blacklist.com</title>
+        <title>Dashboard > The Black List > Cincinnati, Ohio > blacklist.com</title>
         <link rel="shortcut icon" href="/Favicon.ico" type="image/x-icon" />
         <link href="/stylesheets/master.css" media="screen" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" media="screen" href="/stylesheets/themes/base/ui.all.css" type="text/css">
         <link media="screen" rel="stylesheet" type="text/css" href="/stylesheets/tab.css" />
-        <script type="text/javascript" src="/javascripts/jquery.js"></script>
-        <script type="text/javascript" src="/javascripts/jquery.rails.js"></script>
-		<script type="text/javascript" src="/javascripts/application.js"></script>
-		<script type="text/javascript" src="/javascripts/ui/jquery.ui.core.js"></script>
-        <script type="text/javascript" src="/javascripts/ui/jquery.ui.widget.js"></script>
-        <script type="text/javascript" src="/javascripts/ui/jquery.ui.tabs.js"></script>
+        <script src="/javascripts/jquery.js"></script>
+		<script src="/javascripts/ui/jquery.ui.core.js"></script>
+        <script src="/javascripts/ui/jquery.ui.widget.js"></script>
+        <script src="/javascripts/ui/jquery.ui.tabs.js"></script>
         <script>
 			$(function() {
 				$( "#tabs" ).tabs();
@@ -33,7 +31,7 @@
                 <!-- ./bl-header -->
                 <div id="breadcrumbs">
                     <%= link_to "black list", homepage_path%>
-                    &raquo;
+                    &raquo; dashboard
                     <div class="clear">
                     </div>
                 </div>
@@ -44,27 +42,13 @@
 					<% unless flash[:error].blank? %>
 						<div id="flash" class="flash_html flash-failure clear"><%= flash[:error]%></div> 
 					<% end %>
-					<% if flash[:error].blank? && flash[:notice].blank? %>
-						<div id="flash">&nbsp;</div>
-					<% end %>
                 
-                <% if controller.action_name == "show" %>            
- 					<%= render :partial => 'business_details' %>
-				<% else %>					
-	                <div id="bl-listings">
-	                	<div id="b_categories">
-	                		<%= render :partial => 'categories' %>
-							<div class="clear"></div>
-	                	</div>
-						<div id="b_results">
-							<%= yield %>
-			                <div class="clear"></div>
-						</div>
-						<div id="right_rail">
-							<%= render :partial => 'coupons' %>
-						</div><!-- ./right_rail --> 
-					</div><!-- ./bl-listings --> 
-				<% end %>       
+                <div id="bl-home">
+                	
+					<%= yield %>
+	
+				</div>
+				      
                 <div id="bl-footer">
                     <div id="nav-menu">
 						<%= render :partial => 'shared/bottom-nav' %>
