@@ -232,7 +232,7 @@ class ManagerController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to products_manager_path(@service.b_id), notice: 'Service was successfully added.' }
+        format.html { redirect_to services_manager_path(@service.b_id), notice: 'Service was successfully added.' }
       else
         format.html { redirect_to(manager_new_services_url, :error => 'There was a problem creating service.') }
       end

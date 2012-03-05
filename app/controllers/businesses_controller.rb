@@ -6,9 +6,13 @@ class BusinessesController < ApplicationController
   # GET /businesses
   def index
 
-    if params[:catid].nil?
+    if params[:catid].nil? && params[:keyword].nil?	
     	@categories = Category.find(:all, :conditions => ["parent_cat_id=0"])
-    	@businesses = Business.find(:all, :conditions => ["status=1"], :order => 'listinglevel DESC, name ASC')
+    	@businesses = Business.find(:all, :conditions => ["status=1"], :order => 'listinglevel DESC')
+    elsif !params[:keyword].nil?	
+    	@keyword = params[:keyword]
+    	@categories = Category.find(:all, :conditions => ["parent_cat_id=0"])
+    	@businesses = Business.find(:all, :conditions => [ "status=1 and name like ?", "%".concat(@keyword).concat("%") ], :order => 'listinglevel DESC')	
     else
     	@category_count = Category.count(:all, :conditions => ["parent_cat_id=?", params[:catid]])
     	if @category_count > 0
@@ -35,6 +39,7 @@ class BusinessesController < ApplicationController
     @comments = Comment.find(:all, :conditions => ["comment_type='business' and item_id=?", @business.id])
     @products = Product.find(:all, :conditions => ["b_id=?", @business.id])
     @images = Image.find(:all, :conditions => ["b_id=?", @business.id])
+    @services = Service.find(:all, :conditions => ["b_id=?", @business.id])
     @bookmarked = false
 
 	if current_user
@@ -55,6 +60,14 @@ class BusinessesController < ApplicationController
       else
         format.html { redirect_to(request.fullpath, :error => 'There was an error posting comment.') }
       end
+    end
+  end
+  
+  def businesses_home
+  	@categories = Category.find(:all, :order => 'child_cat_id')
+  	
+  	respond_to do |format|
+      format.html # show.html.erb
     end
   end
 

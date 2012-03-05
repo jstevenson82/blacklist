@@ -1,29 +1,10 @@
-<h1>Listing articles</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Link</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.description %></td>
-    <td><%= article.link %></td>
-    <td><%= article.user_id %></td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div>
+    <p><%= link_to article.title, article.link %></p>
+    <p><%= article.description %></p>
+    <% @user = User.find(article.user_id) %>
+    <p>Posted by <%= @user.firstname %> <%= @user.lastname %></p>
+    <p><%= link_to 'comment on article', article %></p>
+  </div>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Article', new_article_path %>

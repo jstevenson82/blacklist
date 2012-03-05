@@ -13,6 +13,9 @@
 		<script type="text/javascript" src="/javascripts/ui/jquery.ui.core.js"></script>
         <script type="text/javascript" src="/javascripts/ui/jquery.ui.widget.js"></script>
         <script type="text/javascript" src="/javascripts/ui/jquery.ui.tabs.js"></script>
+        <script type="text/javascript" src="/javascripts/ui/jquery.ui.position.js"></script>
+        <script type="text/javascript" src="/javascripts/ui/jquery.ui.autocomplete.js"></script>
+        <script type="text/javascript" src="/javascripts/application.js"></script>
         <script>
 			$(function() {
 				$( "#tabs" ).tabs();
@@ -50,6 +53,11 @@
                 
                 <% if controller.action_name == "show" %>            
  					<%= render :partial => 'business_details' %>
+				<% elsif controller.action_name == "businesses_home" %>            
+ 					<div id="bl-listings">
+ 						<%= yield %>
+			            <div class="clear"></div>
+					</div>
 				<% else %>					
 	                <div id="bl-listings">
 	                	<div id="b_categories">

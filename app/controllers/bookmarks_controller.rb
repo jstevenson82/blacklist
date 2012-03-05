@@ -22,8 +22,8 @@ class BookmarksController < ApplicationController
   # DELETE /bookmarks/1
   def destroy
     @bookmark = Bookmark.find(params[:id])
-    @bookmarks = Bookmark.find(:all, :conditions => ["user_id=?", params[:user_id]])
     @bookmark.destroy
+    @bookmarks = Bookmark.find(:all, :conditions => ["user_id=?", params[:user_id]])    
 
     respond_to do |format|
       format.js

@@ -50,4 +50,17 @@ class Business < ActiveRecord::Base
   		self.errors.add :base, "At least one business hour field must be filled in."
   	end
   end
+  
+  def business_name=(name)
+	  business = Business.find_by_name(name)
+	  if business
+	    self.business_id = business.id
+	  else
+	    errors[:business_name] << "Invalid name entered"
+	  end
+  end
+  
+  def business_name
+	  Business.find(business_id).name if business_id
+  end
 end

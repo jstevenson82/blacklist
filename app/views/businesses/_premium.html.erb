@@ -1,0 +1,175 @@
+<h1><%= @business.name %></h1>
+<div id="bl-details">
+	<ul id="b-details">
+		<li class="b-address">
+			<%= @business.address %> <%= @business.city %>, <%= @business.state %> <%= @business.zip %>
+		</li>
+		<li class="b-phone">
+			<%= @business.phone %>
+		</li>
+		<% if !@business.website.empty? %>
+			<li class="b-website">
+				<%= link_to "Visit Website", @business.website%>
+			</li>
+		<% end %>
+		<% if !@business.email.empty? %>
+			<li class="b-email">
+				<a href="mailto:<%= @business.email %>">Send email</a>
+			</li>
+		<% end %>
+	</ul>
+	<% if @business.photo? %>
+		<%= image_tag @business.photo.url(:lightbox), :class => "pad10 left" %>
+	<% end %>
+	<% if !@business.photo? %>
+		<%= image_tag "/images/Joe.JPG", :class => "pad10 left" %>
+	<% end %>
+
+	<ul id="user-tools">
+		<%= render 'user_options' %>
+	</ul>
+	<ul id="business-hours">
+		<li class="title">
+			Business Hours
+		</li>
+		<% if !@business.mon_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Monday</span>
+				<span class="right"><%= @business.mon_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.tues_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Tuseday</span>
+				<span class="right"><%= @business.tues_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.wed_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Wednesday</span>
+				<span class="right"><%= @business.wed_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.thurs_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Thursday</span>
+				<span class="right"><%= @business.thurs_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.fri_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Friday</span>
+				<span class="right"><%= @business.fri_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.sat_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Saturday</span>
+				<span class="right"><%= @business.sat_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.sun_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left">Sunday</span>
+				<span class="right"><%= @business.sun_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+		<% if !@business.other_hours.empty? %>
+			<li class="dayOfWeek">
+				<span class="left"><%= @business.other_hours %></span>
+				<div class="clear">
+				</div>
+			</li>
+		<% end %>
+	</ul>
+	<div class="tab-container">
+
+		<div id="tabs">
+			<ul>
+				<li>
+					<a href="#details">about business</a>
+				</li>
+				<% if @images.count > 0 %>
+					<li>
+						<a href="#images">photo(s)</a>
+					</li>
+				<% end %>
+				<% if @coupons.count > 0 %>
+					<li>
+						<a href="#coupons">coupon(s)</a>
+					</li>
+				<% end %>
+				<% if @comments.count > 0 %>
+					<li>
+						<a href="#comment_view">Review(s)</a>
+					</li>
+				<% end %>
+				<% if @products.count > 0 %>
+					<li>
+						<a href="#products_view">Product(s)</a>
+					</li>
+				<% end %>
+			</ul>
+			<div id="details">
+				
+				<% if !@business.tag_line.blank? %>
+					<span class="tagline"><%= @business.tag_line %></span>
+				<% end %>
+				
+				<p>
+					<strong>Year established:</strong>&nbsp;<%= @business.year_established %>
+				</p>
+				<p>
+					<strong>Payment methods:</strong>&nbsp;<%= @business.payment_method %>
+				</p>
+				<% if !@business.parking.empty? %>
+					<p>
+						<strong>Payment parking:</strong>&nbsp;<%= @business.parking %>
+					</p>
+				<% end %>
+				<% if !@business.description.blank? %>
+					<p>
+						<strong>Description:</strong>&nbsp;<%= @business.description %>
+					</p>
+				<% end %>
+			</div>
+			<% if @images.count > 0 %>
+				<div id="images">
+					<%= render 'business_images' %>
+				</div>
+			<% end %>
+			<% if @coupons.count > 0 %>
+				<div id="coupons">
+					<%= render 'business_coupons' %>
+				</div>
+			<% end %>
+			<% if @comments.count > 0 %>
+				<div id="comment_view">
+					<div id="comments">
+					  <%= render @comments %>
+					</div>
+				</div>
+			<% end %>
+			<% if @products.count > 0 %>
+				<div id="products_view">
+					<%= render 'business_products' %>
+				</div>
+			<% end %>
+		</div>
+	</div><!-- End demo -->
+</div><!-- ./bl-details -->
+

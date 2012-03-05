@@ -1,0 +1,13 @@
+<ul class="mar10 left">
+	<% @categories.each do |category| %>
+		<li class="category<% if category.parent_cat_id > 0 %> indent<% end %>"><%= link_to category.title, businesses_by_cat_path(category.child_cat_id, :title => category.title.gsub(/\s/,"-").gsub("\"",""))%></li>	
+	<% end %>
+</ul>
+
+<div class="mar10 left">
+	<h4>Enter Business Name</h4>
+	<form action="/businesses" method="get">
+		<input type="text" id="business_lookup" name="keyword" class="left">
+		<input type="submit" value="Go!" class="left clear">
+	</form>
+</div>

@@ -1,10 +1,10 @@
 Blacklist::Application.routes.draw do
 
-  resources :images
+  get "ajax/businesses"
 
   #resources :businesses_in_categories
 
-  resources :services, :products, :coupons, :businesses, :comments, :users, :blogs, :articles, :bookmarks, :categories, :users, :user_sessions
+  resources :services, :products, :coupons, :businesses, :comments, :users, :blogs, :articles, :bookmarks, :categories, :users, :user_sessions,  :images
   
   root :to => "home#home", :as => :homepage
   match 'get-advertised' => 'home#advertise', :as => :advertise
@@ -21,9 +21,11 @@ Blacklist::Application.routes.draw do
   match '/blogs/:id/blog_create_comment' => 'blogs#blogs_create_comment', :as => :blog_create_comment
   
   match '/businesses/:catid/:title.html' => 'businesses#index', :as => :businesses_by_cat
+  match '/businesses/index' => 'businesses#index', :as => :businesses_by_keyword
   match '/business/:id/:title.html' => 'businesses#show', :as => :view_business
   match '/business/:id' => 'businesses#show', :as => :view_business_comments
   match '/businesses/businesses_create_comment' => 'businesses#businesses_create_comment', :as => :create_comment
+  match '/businesses_home' => 'businesses#businesses_home', :as => :businesses_home
 
   match '/bookmark/create' => 'bookmarks#create', :as => :create_bookmark
   match '/bookmark/:id/destroy/:user_id' => 'bookmarks#destroy', :as => :destroy_bookmark

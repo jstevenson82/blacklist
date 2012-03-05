@@ -1,3 +1,6 @@
+<% if !@keyword.blank? %>
+	<div class="keyword pad5"><strong>Searching for:</strong> <%= @keyword %></div>
+<% end %>
 <span class="pad10 display_block clear business_listing_count">We've found <strong><%= @businesses.count %></strong> business(es)</span>
 
 <% @businesses.each do |business| %>
@@ -11,7 +14,26 @@
 	           	<div class="phone"><%= business.phone %></div>
 	           	<div class="clear"></div>
 				<% if !business.website.empty? %>							
-					<a href="#" class="blueButtonSM left">visit website</a>
+					<%= link_to "visit website", business.website, :class => "blueButtonSM left" %>
+				<% end %>
+				<%= link_to "write a review", post_comment_path( business, "business" ), :class => "blueButtonSM left" %>
+			</div>
+			<% if business.photo? %>
+				<div class="right pad10"><%= image_tag business.photo.url(:thumb) %></div>
+			<% end %>
+				<div class="clear"></div>
+		</div>
+		
+	<% elsif business.listinglevel == 110 %>
+	
+		<div id="pre_listing" class="business_listting">
+	    	<div class="pre_list_details">
+	    		<div class="title"><%= link_to business.name, view_business_path(business, :title => business.name.gsub(/\s/,"-").gsub("\"","")) %></div>
+	            <div class="address"><%= business.address %> <%= business.city %>, <%= business.state %> <%= business.zip %></div>
+	           	<div class="phone"><%= business.phone %></div>
+	           	<div class="clear"></div>
+				<% if !business.website.empty? %>							
+					<%= link_to "visit website", business.website, :class => "blueButtonSM left" %>
 				<% end %>
 				<%= link_to "write a review", post_comment_path( business, "business" ), :class => "blueButtonSM left" %>
 			</div>

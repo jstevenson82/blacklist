@@ -1,4 +1,5 @@
 <h3>blogs (<%= @blogs.count %>)</h3>
+<%= link_to "new blog", "#"%>
 <% @blogs.each do |blog| %>
 	<div class="user-blog <%=cycle('cycle_off', 'cycle_on')%>">
 		<div class="item-details">
@@ -9,12 +10,12 @@
 		</div>
 		
 		<div class="right">
-			<div class="left user_bookmarks_actions">
+			<div class="left user_bookmarks_actions unfinished">
 				<%= link_to image_tag("/images/ico_aboutyou.png", :class => "user_bookmarks_actions_image" ), "#" %>
 				<p>Edit Blog</p>
 			</div>
-			<div class="left user_bookmarks_actions">
-				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), "#", :remote=> true %>
+			<div class="left user_bookmarks_actions unfinished">
+				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), "#", :remote=> true, :confirm => 'Are you sure?' %>
 				<p>Remove</p>
 			</div>
 			<div class="clear"></div>

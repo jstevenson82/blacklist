@@ -1,6 +1,6 @@
 <h1>Editing service</h1>
 
-<%= form_for @service, :url => manager_update_coupons_path( @service ) do |f| %>
+<%= form_for @service, :url => manager_update_services_path( @service ) do |f| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
@@ -29,4 +29,4 @@
 <% end %>
 
 
-<%= link_to 'Back', services_manager_path(@service.id) %>
+<%= link_to 'Back', services_manager_path(@business.id) %>

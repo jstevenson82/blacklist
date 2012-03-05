@@ -9,9 +9,9 @@
 
 <% @services.each do |service| %>
   <tr>
-    <td><%= link_to service.title, edit_service_path(service) %></td>
+    <td><%= link_to service.title, manager_edit_services_path(service) %></td>
     <td><%= service.body %></td>
-    <td>><%= link_to "Delete", manager_destroy_services_path(service.id), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to "Delete", manager_destroy_services_path(service.id), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

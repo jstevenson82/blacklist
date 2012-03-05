@@ -30,10 +30,13 @@ h1 { margin:10px 50px; }
 .right { float:right; }
 .alignRight { text-align: right; }
 .display_block { display:block; }
+.indent { margin-left: 20px; }
 
 a img, *:link img, *:visited img {
     border: medium none;
 }
+
+.unfinished { background-color:#F4B7CD; }
 
 #nav-menu { float:left; margin: 40px 0px 20px; }
 ul#menu  { list-style:none; list-style-type:none; display:inline; padding: 0; }
@@ -486,6 +489,10 @@ li.category { padding:5px 0 5px 5px; width:100%; }
 .cycle_on { background: none repeat scroll 0 0 #F3F3F3; }
 .cycle_off { background: none repeat scroll 0 0 #FFF; }
 
+
+#b_results #featured_listing a { color:#2A6AB4; } 
+#b_results #featured_listing .feat_list_details { padding:10px; float:left; }
+
 #b_results #featured_listing { 
 	background: none repeat scroll 0 0 #F1F6FC; 
 	border: 1px solid #CCCCCC; 
@@ -494,8 +501,19 @@ li.category { padding:5px 0 5px 5px; width:100%; }
 	color: #363636; 
 	line-height: 18px; 
 }
-#b_results #featured_listing a { color:#2A6AB4; } 
-#b_results #featured_listing .feat_list_details { padding:10px; float:left; }
+
+#b_results #pre_listing a { color:#2A6AB4; } 
+#b_results #pre_listing .pre_list_details { padding:10px; float:left; }
+
+#b_results #pre_listing { 
+	background: none repeat scroll 0 0 #F1F6FC; 
+	/*border: 1px solid #73A36E; */
+	color:#fff; 
+	margin-bottom:10px; 
+	color: #363636; 
+	line-height: 18px; 
+}
+
 #b_results #basic_listing {  border-left: 1px solid #E5E4E2; margin-top: 10px; }
 
 #bl-listings #right_rail { float:left; width:270px; }
@@ -521,6 +539,9 @@ ul#b-details { margin:0px; padding:0px; display:block; line-height:18px; list-st
 ul#b-details .b-address, ul#b-details .b-phone, ul#b-details .b-website, ul#b-details .b-email { display:inline; padding-right:10px; }
 ul#b-details .b-address, ul#b-details .b-phone { font-size:18px; }
 ul#b-details .b-website a, ul#b-details .b-email a { font-size:18px; color:#363636; border-left:1px solid #363636; padding-left:10px; }
+
+#bl-details .services { float:left; clear:both; padding:10px; }
+#bl-details .services p { width:100px; }
 
 ul#business-hours { width:200px; list-style-type:none; font-size:12px; border:1px solid #363636; padding:0px; margin:10px; float:right; }
 ul#business-hours li { background-color:#EBF2F7; border-bottom:2px solid #fff; }
