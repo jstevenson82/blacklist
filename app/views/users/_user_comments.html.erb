@@ -11,12 +11,8 @@
 		</div>
 		
 		<div class="right">
-			<div class="left user_bookmarks_actions unfinished">
-				<%= link_to image_tag("/images/ico_aboutyou.png", :class => "user_bookmarks_actions_image" ), "#" %>
-				<p>Edit Comment</p>
-			</div>
-			<div class="left user_bookmarks_actions unfinished">
-				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), "#", :remote=> true, :confirm => 'Are you sure?' %>
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), destroy_comment_path(comment.id, current_user.id), :remote=> true, :confirm => 'Are you sure?' %>
 				<p>Remove</p>
 			</div>
 			<div class="clear"></div>

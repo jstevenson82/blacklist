@@ -19,11 +19,13 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
-      if @bookmark.save
-        format.html { redirect_to(@bookmark, :notice => 'Bookmark was successfully created.') }
+      if @comment.save
+        format.html { redirect_to(@comment, :notice => 'comment was successfully created.') }
       else
         format.html { render :action => "new" }
       end
     end
   end
+  
+
 end

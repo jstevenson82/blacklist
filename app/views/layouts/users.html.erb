@@ -33,7 +33,10 @@
                 <!-- ./bl-header -->
                 <div id="breadcrumbs">
                     <%= link_to "black list", homepage_path%>
-                    &raquo; dashboard
+                    &raquo; 
+                    <% if current_user %>
+						<%= link_to "dashboard", dashboard_path( current_user.id, :title => current_user.firstname + "-" + current_user.lastname )%>
+					<% end %>
                     <div class="clear">
                     </div>
                 </div>
@@ -49,8 +52,12 @@
 					<% end %>
                 
                 <div id="bl-home">
-                	
-					<%= yield %>
+                	<% if current_user %>
+						<%= yield %>
+					<% else %>
+						<h1>Please login to access the register user functions</h1>
+					     <p>Click here to <%= link_to "login", :login %>
+					<% end %>
 	
 				</div>
 				      

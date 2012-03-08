@@ -81,7 +81,3 @@ $('a[data-remote=true]').click( function() {
     });
     return false;
 });
-
-$(document).ready(function(){
-  $('#business_lookup').autocomplete({source: "/ajax/businesses"});
-});

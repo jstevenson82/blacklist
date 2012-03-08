@@ -53,10 +53,11 @@ class BusinessesController < ApplicationController
   
   def businesses_create_comment
     @comment = Comment.new(params[:comment])
+    @business = Business.find(@comment.item_id)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to(request.referer, :notice => 'Comment has been successfully posted.') }
+        format.html { redirect_to(view_business_path(@business.id, :title => @business.name.gsub(/\s/,"-").gsub("\"","")), :notice => 'Comment has been successfully posted.') }
       else
         format.html { redirect_to(request.fullpath, :error => 'There was an error posting comment.') }
       end

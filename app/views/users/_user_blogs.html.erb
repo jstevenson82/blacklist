@@ -1,21 +1,21 @@
-<h3>blogs (<%= @blogs.count %>)</h3>
-<%= link_to "new blog", "#"%>
+<h3>blog(s) (<%= @blogs.count %>)</h3>
+<%= link_to "new blog", new_blog_path %>
 <% @blogs.each do |blog| %>
 	<div class="user-blog <%=cycle('cycle_off', 'cycle_on')%>">
 		<div class="item-details">
-			<div class="business_name"><%= link_to blog.title, "#" %></div>
+			<div class="business_name"><%= link_to blog.title, edit_blog_path(blog.id) %></div>
 			<div class="business_loc"><%= truncate( blog.body.gsub(/<.*?>/, "") , :length => 250 ) %></div>		
 			<p class="bookmarked-date">Created on <%= blog.created_at.strftime("%B %d %Y at %I:%M %p") %> </p>
 			<div class="clear"></div>
 		</div>
 		
 		<div class="right">
-			<div class="left user_bookmarks_actions unfinished">
-				<%= link_to image_tag("/images/ico_aboutyou.png", :class => "user_bookmarks_actions_image" ), "#" %>
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_aboutyou.png", :class => "user_bookmarks_actions_image" ), edit_blog_path(blog.id) %>
 				<p>Edit Blog</p>
 			</div>
-			<div class="left user_bookmarks_actions unfinished">
-				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), "#", :remote=> true, :confirm => 'Are you sure?' %>
+			<div class="left user_bookmarks_actions">
+				<%= link_to image_tag("/images/ico_cancel.gif", :class => "user_bookmarks_actions_image" ), destroy_blog_path(blog.id, current_user.id), :remote=> true, :confirm => 'Are you sure?' %>
 				<p>Remove</p>
 			</div>
 			<div class="clear"></div>

@@ -27,8 +27,15 @@ Blacklist::Application.routes.draw do
   match '/businesses/businesses_create_comment' => 'businesses#businesses_create_comment', :as => :create_comment
   match '/businesses_home' => 'businesses#businesses_home', :as => :businesses_home
 
+	# *********  User section  ********
   match '/bookmark/create' => 'bookmarks#create', :as => :create_bookmark
-  match '/bookmark/:id/destroy/:user_id' => 'bookmarks#destroy', :as => :destroy_bookmark
+  match '/users/:id/destroy_bookmarks/:user_id' => 'users#destroy_bookmarks', :as => :destroy_bookmark
+  match '/users/:id/destroy_comments/:user_id' => 'users#destroy_comments', :as => :destroy_comment
+  match '/users/:id/destroy_blogs/:user_id' => 'users#destroy_blogs', :as => :destroy_blog
+  match '/new_blogs' => 'users#new_blogs', :as => :new_blog
+  match '/edit_blogs/:id' => 'users#edit_blogs', :as => :edit_blog
+  match '/create_blogs' => 'users#create_blogs', :as => :create_blogs
+  match '/update_blogs/:id' => 'users#update_blogs', :as => :update_blogs
     
   match '/coupons' => 'coupons#index', :as => :view_coupons
   

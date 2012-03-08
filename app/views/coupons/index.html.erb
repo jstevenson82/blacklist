@@ -5,12 +5,33 @@
 			<div class="body martb10"><%= coupon.body %></div>
 			<div class="expire martb10"><strong>expires:</strong>&nbsp;<%= coupon.expire %></div>
 			<div class="right"><%= link_to "view listing info", business_path(coupon.b_id) %></div>
-			<div class="right clear"><a href="#" class="orangeButton">Print</a></div>
+			<div class="right clear">
+				<a href="#" id="button" class="orangeButton" onclick="openCoupon('<%= coupon.id %>')">Print</a>
+			</div>
 			<div class="exclusion">*<%= coupon.exclusion %>*</div>
 			<div class="clear"></div>
 		</div>
+		
+		
+		<div id="item-<%= coupon.id %>" class="popup">
+			<!-- a id="popupClose">x</a -->
+				<div class="coupon pad10 marb10">
+					<div class="title"><%= coupon.headline %></div>
+					<div class="body martb10"><%= coupon.body %></div>
+					<div class="expire martb10"><strong>expires:</strong>&nbsp;<%= coupon.expire %></div>
+					<div class="right"><%= link_to "view listing info", business_path(coupon.b_id) %></div>
+					<div class="right clear">
+						<a href="#" id="button" class="orangeButton">Print</a>
+					</div>
+					<div class="exclusion">*<%= coupon.exclusion %>*</div>
+					<div class="clear"></div>
+					<a hre="#" class="blackbutton" onclick="closePopUp('<%= coupon.id %>')">Close</a>
+				</div>
+		</div>	
 	<% end %>
 </div>
+
+<div id="backgroundPopup"></div>
 
 <div id="paginate-style">
 	<%= will_paginate @coupons %>

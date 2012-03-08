@@ -20,6 +20,9 @@
 			$(function() {
 				$( "#tabs" ).tabs();
 			});
+			$(document).ready(function(){
+			  $('#business_lookup').autocomplete({source: "/ajax/businesses"});
+			});
 		</script>
     </head>
     <body>

@@ -3,7 +3,27 @@
 		<div class="title"><%= coupon.headline %></div>
 		<div class="body"><%= coupon.body %></div>
 		<div class="expire"><strong>expires:</strong>&nbsp;<%= coupon.expire %></div>
-		<div class="right"><a href="#" class="orangeButton">Print</a></div>
+		<div class="right">
+			<div id="button"><input type="submit" value="Press me please!" /></div>
+			<a href="#" class="orangeButton">Print</a>
+		</div>
 		<div class="clear"></div>
 	</div>
+	
+	<div id="popupContact">
+		<a id="popupContactClose">x</a>
+		<div class="coupon pad10 marb10">
+			<div class="title"><%= coupon.headline %></div>
+			<div class="body"><%= coupon.body %></div>
+			<div class="expire"><strong>expires:</strong>&nbsp;<%= coupon.expire %></div>
+			<div class="right">
+				<div id="button"><input type="submit" value="Press me please!" /></div>
+				<a href="#" class="orangeButton">Print</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>	
+	
 <% end %>
+
+	<div id="backgroundPopup"></div>
